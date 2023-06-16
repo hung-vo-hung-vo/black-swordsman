@@ -679,7 +679,22 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: FISHNET;FISHNET_V3
+    Android: dUI_MANAGER
+    EmbeddedLinux: dUI_MANAGER
+    GameCoreScarlett: dUI_MANAGER
+    GameCoreXboxOne: dUI_MANAGER
+    LinuxHeadlessSimulation: dUI_MANAGER
+    Nintendo Switch: dUI_MANAGER
+    PS4: dUI_MANAGER
+    PS5: dUI_MANAGER
+    QNX: dUI_MANAGER
+    Stadia: dUI_MANAGER
+    Standalone: FISHNET;FISHNET_V3;dUI_MANAGER
+    WebGL: dUI_MANAGER
+    Windows Store Apps: dUI_MANAGER
+    XboxOne: dUI_MANAGER
+    iPhone: dUI_MANAGER
+    tvOS: dUI_MANAGER
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

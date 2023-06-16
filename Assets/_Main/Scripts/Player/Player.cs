@@ -3,11 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerDataSO _playerData;
+    [SerializeField] Animator _animator;
+    [SerializeField] Rigidbody2D _body;
 
     public float HealthPoint { get; private set; }
-
-    Animator _animator;
-    Rigidbody2D _body;
 
     private void Awake()
     {

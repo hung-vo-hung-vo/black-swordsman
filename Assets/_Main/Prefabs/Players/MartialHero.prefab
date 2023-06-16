@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50609ff5bf4887992ab4bd75c9ca09d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   _playerData: {fileID: 11400000, guid: 05889a9a7a70d08208a4033cbefc3ed1, type: 2}
   _animator: {fileID: 7492745817146975536}
   _body: {fileID: 7648641917867447362}

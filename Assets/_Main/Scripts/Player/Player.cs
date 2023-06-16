@@ -1,6 +1,7 @@
+using FishNet.Object;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
@@ -10,10 +11,20 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _body = GetComponent<Rigidbody2D>();
-
         HealthPoint = _playerData.MaxHealthPoint;
+
+        if (base.IsOwner)
+        {
+            RegisterInput();
+        }
+    }
+
+    void RegisterInput()
+    {
+        InputManager.Instance.OnRun.AddListener(Run);
+        InputManager.Instance.OnJump.AddListener(Jump);
+        InputManager.Instance.OnAttack.AddListener(Attack);
+        InputManager.Instance.OnHeal.AddListener(Heal);
     }
 
     public void Run(int dir)
@@ -42,7 +53,7 @@ public class Player : MonoBehaviour
         _animator.SetTrigger("attack" + skill.ToString());
     }
 
-    public void TakeHit(int damage)
+    public void TakeHit(float damage)
     {
         var healthPoint = Mathf.Clamp(HealthPoint - damage, 0, _playerData.MaxHealthPoint);
         if (healthPoint != HealthPoint)
@@ -59,7 +70,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Heal(int heal)
+    public void Heal(float heal)
     {
         var healthPoint = Mathf.Clamp(HealthPoint + heal, 0, _playerData.MaxHealthPoint);
         if (healthPoint != HealthPoint)

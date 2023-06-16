@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712a6ca00ed6ff6e6b10c4fbc7d77a1e, type: 3}
   m_Name: MartialHero
   m_EditorClassIdentifier: 
-  <MaxHealthPoint>k__BackingField: 0
-  <RunSpeed>k__BackingField: 0
-  <JumpForce>k__BackingField: 0
+  <MaxHealthPoint>k__BackingField: 90
+  <RunSpeed>k__BackingField: 8
+  <JumpForce>k__BackingField: 7

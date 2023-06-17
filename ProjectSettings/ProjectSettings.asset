@@ -679,22 +679,23 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: dUI_MANAGER
-    EmbeddedLinux: dUI_MANAGER
+    Android: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    EmbeddedLinux: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
     GameCoreScarlett: dUI_MANAGER
     GameCoreXboxOne: dUI_MANAGER
-    LinuxHeadlessSimulation: dUI_MANAGER
-    Nintendo Switch: dUI_MANAGER
-    PS4: dUI_MANAGER
+    LinuxHeadlessSimulation: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    Nintendo Switch: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    PS4: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
     PS5: dUI_MANAGER
-    QNX: dUI_MANAGER
-    Stadia: dUI_MANAGER
-    Standalone: FISHNET;FISHNET_V3;dUI_MANAGER
-    WebGL: dUI_MANAGER
-    Windows Store Apps: dUI_MANAGER
-    XboxOne: dUI_MANAGER
-    iPhone: dUI_MANAGER
-    tvOS: dUI_MANAGER
+    QNX: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    Server: UNITY_VISUAL_SCRIPTING
+    Stadia: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    Standalone: FISHNET;FISHNET_V3;dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    WebGL: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    Windows Store Apps: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    XboxOne: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    iPhone: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
+    tvOS: dUI_MANAGER;UNITY_VISUAL_SCRIPTING
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

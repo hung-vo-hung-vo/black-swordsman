@@ -1,3 +1,4 @@
+using FishNet;
 using UnityEngine;
 
 public class StoryGameScener : MonoBehaviour
@@ -9,5 +10,6 @@ public class StoryGameScener : MonoBehaviour
     private void Start()
     {
         _player = Instantiate(StoryGameManager.Instance.PlayerPrefab, _spawnPoint.position, Quaternion.identity);
+        InstanceFinder.ServerManager.Spawn(_player.gameObject);
     }
 }

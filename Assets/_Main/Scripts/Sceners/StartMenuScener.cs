@@ -1,4 +1,5 @@
 using System;
+using FishNet;
 using FishNet.Object;
 using FishNet.Transporting;
 using UnityEngine;
@@ -7,19 +8,20 @@ public class StartMenuScener : MonoBehaviour
 {
     public void StartStoryGame()
     {
-        GameManager.Instance.NetworkManager.ClientManager.OnClientConnectionState += OnStoryClientConnState;
+        InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
         GameManager.Instance.ConnectToServer(false);
     }
 
-    private void OnStoryClientConnState(ClientConnectionStateArgs args)
+    void OnStoryClientConnState(ClientConnectionStateArgs args)
     {
-        GameManager.Instance.NetworkManager.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
         switch (args.ConnectionState)
         {
             case LocalConnectionState.Started:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
                 ApcsSceneLoader.Instance.LoadStoryGame();
-                break;
+                return;
             case LocalConnectionState.Stopping:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
                 break;
         }
     }

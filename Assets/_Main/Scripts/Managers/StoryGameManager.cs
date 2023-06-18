@@ -8,6 +8,7 @@ public class StoryGameManager : Singleton<StoryGameManager>
     const string _CURRENT_LEVEL_KEY = "currentLevel";
 
     [SerializeField] List<string> _levels = new List<string>();
+    [field: SerializeField] public Player PlayerPrefab { get; private set; }
 
     List<string> _completedLevels;
     string _currentLevel;

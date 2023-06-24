@@ -16,8 +16,7 @@ public class StoryGameManager : Singleton<StoryGameManager>
     protected override void Awake()
     {
         base.Awake();
-        _completedLevels = ES3.Load<List<string>>(_COMPLETED_LEVELS_KEY);
-        _currentLevel = ES3.Load<string>(_CURRENT_LEVEL_KEY);
+        LoadGame();
     }
 
     public void SaveGame()
@@ -48,5 +47,21 @@ public class StoryGameManager : Singleton<StoryGameManager>
     {
         SaveGame();
         base.OnApplicationQuit();
+    }
+
+    private void LoadGame()
+    {
+        try
+        {
+            _completedLevels = ES3.Load<List<string>>(_COMPLETED_LEVELS_KEY);
+            _currentLevel = ES3.Load<string>(_CURRENT_LEVEL_KEY);
+        }
+        catch (System.Exception exp)
+        {
+            Debug.LogError(exp);
+
+            _completedLevels = new List<string>();
+            _currentLevel = null;
+        }
     }
 }

@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class StoryGameScener : NetworkBehaviour
 {
-    [SerializeField] Transform _spawnPoint;
-
     GameObject _player;
 
     public override async void OnStartClient()
@@ -24,7 +22,7 @@ public class StoryGameScener : NetworkBehaviour
 
         if (base.IsOwner)
         {
-            _player = Instantiate(StoryGameManager.Instance.PlayerPrefab, _spawnPoint.position, Quaternion.identity);
+            _player = Instantiate(StoryGameManager.Instance.PlayerPrefab, transform.position, Quaternion.identity);
             ServerManager.Spawn(_player, ClientManager.Connection);
         }
         else

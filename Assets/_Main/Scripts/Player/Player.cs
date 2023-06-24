@@ -1,7 +1,7 @@
 using FishNet.Object;
 using UnityEngine;
 
-public class Player : NetworkBehaviour
+public class Player : ApcsNetworkBehaviour
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
@@ -9,14 +9,11 @@ public class Player : NetworkBehaviour
 
     public float HealthPoint { get; private set; }
 
-    private void Awake()
+    public override void OnStartClient()
     {
+        base.OnStartClient();
         HealthPoint = _playerData.MaxHealthPoint;
-
-        if (base.IsOwner)
-        {
-            RegisterInput();
-        }
+        IfIsOwnerThenDo(RegisterInput);
     }
 
     void RegisterInput()

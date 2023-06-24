@@ -11,10 +11,10 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] KeyCode attack2 = KeyCode.L;
     [SerializeField] KeyCode heal = KeyCode.T;
 
-    public UnityEvent<int> OnRun { get; private set; }
-    public UnityEvent OnJump { get; private set; }
-    public UnityEvent<int> OnAttack { get; private set; }
-    public UnityEvent<float> OnHeal { get; private set; }
+    public UnityEvent<int> OnRun { get; private set; } = new UnityEvent<int>();
+    public UnityEvent OnJump { get; private set; } = new UnityEvent();
+    public UnityEvent<int> OnAttack { get; private set; } = new UnityEvent<int>();
+    public UnityEvent<float> OnHeal { get; private set; } = new UnityEvent<float>();
 
     private void Update()
     {

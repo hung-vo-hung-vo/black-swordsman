@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MartialHero
   m_EditorClassIdentifier: 
   <MaxHealthPoint>k__BackingField: 90
-  <RunSpeed>k__BackingField: 8
-  <JumpForce>k__BackingField: 7
+  <RunSpeed>k__BackingField: 7
+  <JumpForce>k__BackingField: 24

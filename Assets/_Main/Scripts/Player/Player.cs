@@ -6,6 +6,7 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
     [SerializeField] Rigidbody2D _body;
+    [SerializeField] SpriteRenderer _avatar;
 
     public float HealthPoint { get; private set; }
 
@@ -36,7 +37,7 @@ public class Player : ApcsNetworkBehaviour
 
         var normalDir = dir / Mathf.Abs(dir);
         _body.velocity = new Vector2(_playerData.RunSpeed * normalDir, _body.velocity.y);
-        transform.localScale = new Vector3(normalDir, 1, 1);
+        _avatar.flipX = normalDir < 0;
     }
 
     public void Jump()

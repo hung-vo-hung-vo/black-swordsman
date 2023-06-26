@@ -1,3 +1,4 @@
+using Cinemachine;
 using FishNet.Object;
 using UnityEngine;
 
@@ -14,7 +15,11 @@ public class Player : ApcsNetworkBehaviour
     {
         base.OnStartClient();
         HealthPoint = _playerData.MaxHealthPoint;
-        IfIsOwnerThenDo(RegisterInput);
+        IfIsOwnerThenDo(() =>
+        {
+            RegisterInput();
+            VirtualCameraFollow();
+        });
     }
 
     void RegisterInput()
@@ -23,6 +28,12 @@ public class Player : ApcsNetworkBehaviour
         InputManager.Instance.OnJump.AddListener(Jump);
         InputManager.Instance.OnAttack.AddListener(Attack);
         InputManager.Instance.OnHeal.AddListener(Heal);
+    }
+
+    void VirtualCameraFollow()
+    {
+        var virCam = FindObjectOfType<CinemachineVirtualCamera>();
+        virCam.Follow = transform;
     }
 
     public void Run(int dir)

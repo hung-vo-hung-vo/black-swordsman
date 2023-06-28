@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cinemachine;
 using FishNet.Object;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] Rigidbody2D _body;
     [SerializeField] SpriteRenderer _avatar;
+    [SerializeField] SkillAgent _skillAgent;
 
     public float HealthPoint { get; private set; }
 
@@ -15,6 +17,7 @@ public class Player : ApcsNetworkBehaviour
     {
         base.OnStartClient();
         HealthPoint = _playerData.MaxHealthPoint;
+        _skillAgent.SetSkills(_playerData.GetSkills());
         IfIsOwnerThenDo(() =>
         {
             RegisterInput();
@@ -38,7 +41,7 @@ public class Player : ApcsNetworkBehaviour
 
     public void Run(int dir)
     {
-        _animator.SetBool("run", dir != 0);
+        _animator.SetBool(AnimationParam.Run, dir != 0);
 
         if (dir == 0)
         {
@@ -53,13 +56,13 @@ public class Player : ApcsNetworkBehaviour
 
     public void Jump()
     {
-        _animator.SetTrigger("jump");
+        _animator.SetTrigger(AnimationParam.Jump);
         _body.AddForce(Vector2.up * _playerData.JumpForce, ForceMode2D.Impulse);
     }
 
     public void Attack(int skill)
     {
-        _animator.SetTrigger("attack" + skill.ToString());
+        _skillAgent.Attack(skill);
     }
 
     public void TakeHit(float damage)
@@ -70,11 +73,11 @@ public class Player : ApcsNetworkBehaviour
             HealthPoint = healthPoint;
             if (HealthPoint <= 0)
             {
-                _animator.SetTrigger("death");
+                _animator.SetTrigger(AnimationParam.Death);
             }
             else
             {
-                _animator.SetTrigger("takeHit");
+                _animator.SetTrigger(AnimationParam.TakeHit);
             }
         }
     }

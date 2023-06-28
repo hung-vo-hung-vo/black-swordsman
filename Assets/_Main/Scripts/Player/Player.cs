@@ -52,6 +52,7 @@ public class Player : ApcsNetworkBehaviour
         var normalDir = dir / Mathf.Abs(dir);
         _body.velocity = new Vector2(_playerData.RunSpeed * normalDir, _body.velocity.y);
         _avatar.flipX = normalDir < 0;
+        _skillAgent.transform.localScale = new Vector3(normalDir, 1, 1);
     }
 
     public void Jump()

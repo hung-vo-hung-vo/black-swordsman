@@ -1459,6 +1459,38 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[3].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153606227001433103, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -5.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4525337440502471910, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: m_ChunkCullingBounds.x
       value: 2.8333333

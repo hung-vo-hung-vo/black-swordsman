@@ -10,6 +10,7 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] Rigidbody2D _body;
     [SerializeField] SpriteRenderer _avatar;
     [SerializeField] SkillAgent _skillAgent;
+    [SerializeField] JumpPlayer _jumper;
 
     public float HealthPoint { get; private set; }
 
@@ -18,6 +19,7 @@ public class Player : ApcsNetworkBehaviour
         base.OnStartClient();
         HealthPoint = _playerData.MaxHealthPoint;
         _skillAgent.SetSkills(_playerData.GetSkills());
+        _jumper.Init(_playerData, _jumper.Do);
         IfIsOwnerThenDo(() =>
         {
             RegisterInput();
@@ -28,7 +30,7 @@ public class Player : ApcsNetworkBehaviour
     void RegisterInput()
     {
         InputManager.Instance.OnRun.AddListener(Run);
-        InputManager.Instance.OnJump.AddListener(Jump);
+        InputManager.Instance.OnJump.AddListener(_jumper.Do);
         InputManager.Instance.OnAttack.AddListener(Attack);
         InputManager.Instance.OnHeal.AddListener(Heal);
     }
@@ -55,7 +57,7 @@ public class Player : ApcsNetworkBehaviour
         _skillAgent.transform.localScale = new Vector3(normalDir, 1, 1);
     }
 
-    public void Jump()
+    void Jump()
     {
         _animator.SetTrigger(AnimationParam.Jump);
         _body.AddForce(Vector2.up * _playerData.JumpForce, ForceMode2D.Impulse);

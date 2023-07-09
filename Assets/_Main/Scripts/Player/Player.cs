@@ -19,7 +19,7 @@ public class Player : ApcsNetworkBehaviour
         base.OnStartClient();
         HealthPoint = _playerData.MaxHealthPoint;
         _skillAgent.SetSkills(_playerData.GetSkills());
-        _jumper.Init(_playerData, _jumper.Do);
+        _jumper.Init(_playerData, Jump);
         IfIsOwnerThenDo(() =>
         {
             RegisterInput();

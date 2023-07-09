@@ -15,6 +15,7 @@ MonoBehaviour:
   <MaxHealthPoint>k__BackingField: 90
   <RunSpeed>k__BackingField: 7
   <JumpForce>k__BackingField: 24
+  <DoubleJumpWaitingTime>k__BackingField: 0.3
   <Skills>k__BackingField:
   - skillNumber: 0
     damage: 3

@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8010156973225574379}
   - component: {fileID: 9062741895847569839}
   - component: {fileID: 3816804964191715528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

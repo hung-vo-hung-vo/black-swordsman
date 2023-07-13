@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] EnemyDataSO _enemyData;
     [SerializeField] Rigidbody2D _body;

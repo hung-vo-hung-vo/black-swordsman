@@ -201,6 +201,8 @@ GameObject:
   - component: {fileID: 6618699831329491954}
   - component: {fileID: 5257525934315815265}
   - component: {fileID: 6542207217284267289}
+  - component: {fileID: 262044478281938511}
+  - component: {fileID: 3192377038447287941}
   m_Layer: 0
   m_Name: MartialHero
   m_TagString: Untagged
@@ -274,6 +276,8 @@ MonoBehaviour:
   _avatar: {fileID: 2387510086461762423}
   _skillAgent: {fileID: 1030602498248412155}
   _jumper: {fileID: 3518319217037110684}
+  _stat: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!114 &5257525934315815265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +347,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0.02, y: 0}
   m_Size: {x: 0.5, y: 1.15}
   m_Direction: 0
+--- !u!114 &262044478281938511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062968729716802832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8d0c32e5f515449b43dd60a7c3a639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3192377038447287941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062968729716802832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e3399f084a17fb787c272a9366c110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6721285408954382499
 GameObject:
   m_ObjectHideFlags: 0

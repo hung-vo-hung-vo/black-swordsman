@@ -11,13 +11,13 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] SpriteRenderer _avatar;
     [SerializeField] SkillAgent _skillAgent;
     [SerializeField] JumpPlayer _jumper;
-
-    public float HealthPoint { get; private set; }
+    [SerializeField] StatAgent _stat;
+    [SerializeField] Inventory _inventory;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        HealthPoint = _playerData.MaxHealthPoint;
+        _stat.HealthPoint = _playerData.MaxHealthPoint;
         _skillAgent.SetSkills(_playerData.GetSkills());
         _jumper.Init(_playerData, Jump);
         IfIsOwnerThenDo(() =>
@@ -70,11 +70,11 @@ public class Player : ApcsNetworkBehaviour
 
     public void TakeHit(float damage)
     {
-        var healthPoint = Mathf.Clamp(HealthPoint - damage, 0, _playerData.MaxHealthPoint);
-        if (healthPoint != HealthPoint)
+        var healthPoint = Mathf.Clamp(_stat.HealthPoint - damage, 0, _playerData.MaxHealthPoint);
+        if (healthPoint != _stat.HealthPoint)
         {
-            HealthPoint = healthPoint;
-            if (HealthPoint <= 0)
+            _stat.HealthPoint = healthPoint;
+            if (_stat.HealthPoint <= 0)
             {
                 _animator.SetTrigger(AnimationParam.Death);
             }
@@ -87,10 +87,14 @@ public class Player : ApcsNetworkBehaviour
 
     public void Heal(float heal)
     {
-        var healthPoint = Mathf.Clamp(HealthPoint + heal, 0, _playerData.MaxHealthPoint);
-        if (healthPoint != HealthPoint)
+        var healthPoint = Mathf.Clamp(_stat.HealthPoint + heal, 0, _playerData.MaxHealthPoint);
+        if (healthPoint != _stat.HealthPoint)
         {
-            HealthPoint = healthPoint;
+            _stat.HealthPoint = healthPoint;
         }
+    }
+
+    public void UseItem(ItemSO item)
+    {
     }
 }

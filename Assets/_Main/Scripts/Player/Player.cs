@@ -17,7 +17,7 @@ public class Player : ApcsNetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        _stat.HealthPoint = _playerData.MaxHealthPoint;
+        _stat.Init(_playerData);
         _skillAgent.SetSkills(_playerData.GetSkills());
         _jumper.Init(_playerData, Jump);
         IfIsOwnerThenDo(() =>
@@ -27,12 +27,26 @@ public class Player : ApcsNetworkBehaviour
         });
     }
 
+    public override void OnStopClient()
+    {
+        IfIsOwnerThenDo(UnsubscribeInput);
+        base.OnStopClient();
+    }
+
     void RegisterInput()
     {
         InputManager.Instance.OnRun.AddListener(Run);
         InputManager.Instance.OnJump.AddListener(_jumper.Do);
         InputManager.Instance.OnAttack.AddListener(Attack);
-        InputManager.Instance.OnHeal.AddListener(Heal);
+        InputManager.Instance.OnUseItem.AddListener(UseItem);
+    }
+
+    void UnsubscribeInput()
+    {
+        InputManager.Instance.OnRun.RemoveListener(Run);
+        InputManager.Instance.OnJump.RemoveListener(_jumper.Do);
+        InputManager.Instance.OnAttack.RemoveListener(Attack);
+        InputManager.Instance.OnUseItem.RemoveListener(UseItem);
     }
 
     void VirtualCameraFollow()
@@ -70,10 +84,8 @@ public class Player : ApcsNetworkBehaviour
 
     public void TakeHit(float damage)
     {
-        var healthPoint = Mathf.Clamp(_stat.HealthPoint - damage, 0, _playerData.MaxHealthPoint);
-        if (healthPoint != _stat.HealthPoint)
+        if (_stat.UpdateHealth(-damage))
         {
-            _stat.HealthPoint = healthPoint;
             if (_stat.HealthPoint <= 0)
             {
                 _animator.SetTrigger(AnimationParam.Death);
@@ -85,16 +97,29 @@ public class Player : ApcsNetworkBehaviour
         }
     }
 
-    public void Heal(float heal)
+    public void UseItem(ItemAction action)
     {
-        var healthPoint = Mathf.Clamp(_stat.HealthPoint + heal, 0, _playerData.MaxHealthPoint);
-        if (healthPoint != _stat.HealthPoint)
+        var item = _inventory.GetItemByAction(action);
+        if (item != null)
         {
-            _stat.HealthPoint = healthPoint;
+            _inventory.UseItem(item);
+            switch (item.Action)
+            {
+                case ItemAction.HP:
+                    _stat.UpdateHealth(item.Number);
+                    break;
+                case ItemAction.MP:
+                    _stat.UpdateMana(item.Number);
+                    break;
+                case ItemAction.JumpForce:
+                    _stat.SetExtraJumpForce(item.Number);
+                    break;
+                case ItemAction.Damage:
+                    _skillAgent.SetExtraDamage(item.Number);
+                    break;
+                default:
+                    break;
+            }
         }
-    }
-
-    public void UseItem(ItemSO item)
-    {
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDataSO : ScriptableObject
 {
     [field: SerializeField] public float MaxHealthPoint { get; private set; }
+    [field: SerializeField] public float MaxManaPoint { get; private set; }
 
     [field: SerializeField] public float RunSpeed { get; private set; }
 

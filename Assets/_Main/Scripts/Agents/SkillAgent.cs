@@ -10,12 +10,19 @@ public class SkillAgent : MonoBehaviour
     bool _attackSemaphore = false;
     Dictionary<int, SkillData> _skills;
     SkillData _curSkill;
+    ExtraPoint _extraDamage;
 
-    public float Damage => _curSkill.damage;
+    public float Damage => _curSkill.damage + (float)_extraDamage.Value;
 
     public void SetSkills(Dictionary<int, SkillData> skills)
     {
         _skills = skills;
+        _extraDamage = new ExtraPoint();
+    }
+
+    public void SetExtraDamage(float extra)
+    {
+        _extraDamage.Value = extra;
     }
 
     public void Attack(int skill)

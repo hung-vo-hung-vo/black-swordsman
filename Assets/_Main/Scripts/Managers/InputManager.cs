@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,19 +10,31 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] KeyCode attack0 = KeyCode.J;
     [SerializeField] KeyCode attack1 = KeyCode.K;
     [SerializeField] KeyCode attack2 = KeyCode.L;
-    [SerializeField] KeyCode heal = KeyCode.T;
+    [SerializeField] ItemInput[] _itemInputs;
 
     public UnityEvent<int> OnRun { get; private set; } = new UnityEvent<int>();
     public UnityEvent OnJump { get; private set; } = new UnityEvent();
     public UnityEvent<int> OnAttack { get; private set; } = new UnityEvent<int>();
-    public UnityEvent<float> OnHeal { get; private set; } = new UnityEvent<float>();
+    public UnityEvent<ItemAction> OnUseItem { get; private set; } = new UnityEvent<ItemAction>();
+
+    Dictionary<KeyCode, ItemAction> _itemInputDict;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _itemInputDict = new Dictionary<KeyCode, ItemAction>();
+        foreach (var input in _itemInputs)
+        {
+            _itemInputDict[input.input] = input.action;
+        }
+    }
 
     private void Update()
     {
         Run();
         Jump();
         Attack();
-        Heal();
+        UseItem();
     }
 
     void Run()
@@ -68,11 +81,15 @@ public class InputManager : Singleton<InputManager>
         }
     }
 
-    void Heal()
+    void UseItem()
     {
-        if (Input.GetKeyDown(heal))
+        foreach (var input in _itemInputDict)
         {
-            OnHeal?.Invoke(0f);
+            if (Input.GetKeyDown(input.Key))
+            {
+                OnUseItem?.Invoke(input.Value);
+                return;
+            }
         }
     }
 }

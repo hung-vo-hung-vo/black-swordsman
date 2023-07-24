@@ -50,4 +50,12 @@ MonoBehaviour:
   attack0: 106
   attack1: 107
   attack2: 108
-  heal: 116
+  _itemInputs:
+  - input: 49
+    action: 0
+  - input: 50
+    action: 1
+  - input: 51
+    action: 2
+  - input: 52
+    action: 3

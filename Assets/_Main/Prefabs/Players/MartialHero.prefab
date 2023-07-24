@@ -276,8 +276,8 @@ MonoBehaviour:
   _avatar: {fileID: 2387510086461762423}
   _skillAgent: {fileID: 1030602498248412155}
   _jumper: {fileID: 3518319217037110684}
-  _stat: {fileID: 0}
-  _inventory: {fileID: 0}
+  _stat: {fileID: 262044478281938511}
+  _inventory: {fileID: 3192377038447287941}
 --- !u!114 &5257525934315815265
 MonoBehaviour:
   m_ObjectHideFlags: 0

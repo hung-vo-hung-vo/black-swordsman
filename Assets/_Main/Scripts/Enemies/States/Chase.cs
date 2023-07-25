@@ -1,17 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetected : State
+public class Chase : State
 {
-    private DataPlayerDeteced data;
+    protected ChaseData data;
 
     protected bool isPlayerInMinAgroRange;
-    protected bool isPlayerInMaxAgroRange;
-    protected bool canPerformLongRangeSkill;
+    protected bool isLedge;
+    protected bool isWall;
+    protected bool isChaseTimeOver;
 
-    public PlayerDetected(Entity entity, FiniteStateMachine FSM, string animationName, DataPlayerDeteced data) : base(entity, FSM, animationName)
+    public Chase(Entity entity, FiniteStateMachine FSM, string animationName, ChaseData data) : base(entity, FSM, animationName)
     {
         this.data = data;
     }
@@ -21,14 +21,16 @@ public class PlayerDetected : State
         // base.Check();
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
-        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
+        isLedge = entity.CheckLedge();
+        isWall = entity.CheckWall();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocityX(0f);
+        entity.SetVelocityX(data.chaseSpeed);
+        isChaseTimeOver = false;
     }
 
     public override void Exit()
@@ -40,9 +42,9 @@ public class PlayerDetected : State
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + data.cdLongRangeSkill)
+        if (Time.time >= startTime + data.chaseTime)
         {
-            canPerformLongRangeSkill = true;
+            isChaseTimeOver = true;
         }
     }
 

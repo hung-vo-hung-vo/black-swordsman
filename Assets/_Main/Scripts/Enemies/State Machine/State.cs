@@ -42,6 +42,6 @@ public class State
 
     public virtual void Check()
     {
-
+        Debug.Log("State:Check");
     }
 }

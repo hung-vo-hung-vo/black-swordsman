@@ -4,7 +4,7 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : ApcsNetworkBehaviour, IHudable
+public class Player : ApcsNetworkBehaviour
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
@@ -15,20 +15,16 @@ public class Player : ApcsNetworkBehaviour, IHudable
     [SerializeField] StatAgent _stat;
     [SerializeField] Inventory _inventory;
 
-    public UnityEvent<float> OnHealthChanged() => _stat.OnHealthChanged;
-    public UnityEvent<float> OnManaChanged() => _stat.OnManaChanged;
-
     public override void OnStartClient()
     {
         base.OnStartClient();
-        _stat.Init(_playerData);
-        _skillAgent.SetSkills(_playerData.GetSkills());
-        _jumper.Init(_playerData, Jump);
         IfIsOwnerThenDo(() =>
         {
+            _stat.Init(_playerData);
+            _skillAgent.SetSkills(_playerData.GetSkills());
+            _jumper.Init(_playerData, Jump);
             RegisterInput();
             VirtualCameraFollow();
-            RegisterHud();
         });
     }
 
@@ -51,11 +47,6 @@ public class Player : ApcsNetworkBehaviour, IHudable
         InputManager.Instance.OnJump.RemoveListener(_jumper.Do);
         InputManager.Instance.OnAttack.RemoveListener(Attack);
         InputManager.Instance.OnUseItem.RemoveListener(UseItem);
-    }
-
-    void RegisterHud()
-    {
-        FindObjectOfType<Hud>().Init(this);
     }
 
     void VirtualCameraFollow()

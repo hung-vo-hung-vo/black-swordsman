@@ -1,23 +1,46 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StatAgent : MonoBehaviour
+public class StatAgent : MonoBehaviour, IHudable
 {
-    public float HealthPoint { get; private set; }
-    public float ManaPoint { get; private set; }
     public float JumpForce => _jumpForce + (float)_extraJumpForce.Value;
+    public float HealthPoint
+    {
+        get => _healthPoint;
+        private set
+        {
+            _healthPoint = value;
+            OnHealthChanged()?.Invoke(_healthPoint / _data.MaxHealthPoint);
+        }
+    }
+    public float ManaPoint
+    {
+        get => _manaPoint;
+        private set
+        {
+            _manaPoint = value;
+            OnManaChanged()?.Invoke(_manaPoint / _data.MaxManaPoint);
+        }
+    }
 
-    public UnityEvent<float> OnHealthChanged { get; private set; } = new UnityEvent<float>();
-    public UnityEvent<float> OnManaChanged { get; private set; } = new UnityEvent<float>();
+    UnityEvent<float> _onHealthChanged = new UnityEvent<float>();
+    UnityEvent<float> _onManaChanged = new UnityEvent<float>();
+
+    public UnityEvent<float> OnHealthChanged() => _onHealthChanged;
+    public UnityEvent<float> OnManaChanged() => _onManaChanged;
 
     float _jumpForce;
     ExtraPoint _extraJumpForce;
+
+    float _healthPoint;
+    float _manaPoint;
 
     PlayerDataSO _data;
 
     public void Init(PlayerDataSO data)
     {
         _data = data;
+        FindObjectOfType<Hud>()?.Init(this);
 
         HealthPoint = _data.MaxHealthPoint;
         ManaPoint = _data.MaxManaPoint;
@@ -37,7 +60,6 @@ public class StatAgent : MonoBehaviour
         if (hp != HealthPoint)
         {
             HealthPoint = hp;
-            OnHealthChanged?.Invoke(HealthPoint / _data.MaxHealthPoint);
             return true;
         }
 
@@ -50,7 +72,6 @@ public class StatAgent : MonoBehaviour
         if (mp != ManaPoint)
         {
             ManaPoint = mp;
-            OnManaChanged?.Invoke(ManaPoint / _data.MaxManaPoint);
             return true;
         }
 

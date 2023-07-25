@@ -8,7 +8,7 @@ public class Hud : MonoBehaviour
 
     public void Init(IHudable hudable)
     {
-        hudable.OnHealthChanged().AddListener((hp) => _healthBar.value = hp);
-        hudable.OnManaChanged().AddListener((mp) => _manaBar.value = mp);
+        hudable.OnHealthChanged().AddListener((hpPercent) => _healthBar.value = hpPercent);
+        hudable.OnManaChanged().AddListener((mpPercent) => _manaBar.value = mpPercent);
     }
 }

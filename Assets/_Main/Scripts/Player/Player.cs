@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using Cinemachine;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Player : ApcsNetworkBehaviour
+public class Player : ApcsNetworkBehaviour, IHudable
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
@@ -13,6 +14,9 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] JumpPlayer _jumper;
     [SerializeField] StatAgent _stat;
     [SerializeField] Inventory _inventory;
+
+    public UnityEvent<float> OnHealthChanged() => _stat.OnHealthChanged;
+    public UnityEvent<float> OnManaChanged() => _stat.OnManaChanged;
 
     public override void OnStartClient()
     {
@@ -24,13 +28,13 @@ public class Player : ApcsNetworkBehaviour
         {
             RegisterInput();
             VirtualCameraFollow();
+            RegisterHud();
         });
     }
 
-    public override void OnStopClient()
+    void OnDestroy()
     {
         IfIsOwnerThenDo(UnsubscribeInput);
-        base.OnStopClient();
     }
 
     void RegisterInput()
@@ -47,6 +51,11 @@ public class Player : ApcsNetworkBehaviour
         InputManager.Instance.OnJump.RemoveListener(_jumper.Do);
         InputManager.Instance.OnAttack.RemoveListener(Attack);
         InputManager.Instance.OnUseItem.RemoveListener(UseItem);
+    }
+
+    void RegisterHud()
+    {
+        FindObjectOfType<Hud>().Init(this);
     }
 
     void VirtualCameraFollow()

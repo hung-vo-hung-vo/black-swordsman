@@ -58,6 +58,16 @@ public class Entity : MonoBehaviour
         return Physics2D.Raycast(ledgeCheck.position, Vector2.down, data.ledgeCheckDistance, data.groundLayer);
     }
 
+    public virtual bool CheckPlayerInMinAgroRange()
+    {
+        return Physics2D.Raycast(avatar.transform.position, avatar.transform.right, data.minAgroRange, data.playerLayer);
+    }
+
+    public virtual bool CheckPlayerInMaxAgroRange()
+    {
+        return Physics2D.Raycast(avatar.transform.position, avatar.transform.right, data.maxAgroRange, data.playerLayer);
+    }
+
     public virtual void Flip()
     {
         facingDirection *= -1;

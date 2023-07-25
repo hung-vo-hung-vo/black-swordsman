@@ -1,16 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : State
+public class PlayerDetected : State
 {
-    private DataPatrol data;
+    private DataPlayerDeteced data;
 
-    protected bool isWall;
-    protected bool isLedge;
     protected bool isPlayerInMinAgroRange;
+    protected bool isPlayerInMaxAgroRange;
 
-    public Patrol(Entity entity, FiniteStateMachine FSM, string animationName, DataPatrol data) : base(entity, FSM, animationName)
+    public PlayerDetected(Entity entity, FiniteStateMachine FSM, string animationName, DataPlayerDeteced data) : base(entity, FSM, animationName)
     {
         this.data = data;
     }
@@ -19,16 +19,15 @@ public class Patrol : State
     {
         base.Check();
 
-        isWall = entity.CheckWall();
-        isLedge = entity.CheckLedge();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocityX(data.movementSpeed);
+        entity.SetVelocityX(0f);
     }
 
     public override void Exit()
@@ -39,12 +38,6 @@ public class Patrol : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (isWall || !isLedge)
-        {
-            entity.Flip();
-            entity.SetVelocityX(data.movementSpeed);
-        }
     }
 
     public override void PhysicsUpdate()

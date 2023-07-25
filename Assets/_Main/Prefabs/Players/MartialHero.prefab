@@ -203,9 +203,9 @@ GameObject:
   - component: {fileID: 6542207217284267289}
   - component: {fileID: 262044478281938511}
   - component: {fileID: 3192377038447287941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MartialHero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

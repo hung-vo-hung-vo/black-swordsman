@@ -21,8 +21,8 @@ public class Player : ApcsNetworkBehaviour
         IfIsOwnerThenDo(() =>
         {
             _stat.Init(_playerData);
-            _skillAgent.SetSkills(_playerData.GetSkills());
-            _jumper.Init(_playerData, Jump);
+            _skillAgent.Init(_stat, _playerData.GetSkills());
+            _jumper.Init(_stat, _playerData, Jump);
             RegisterInput();
             VirtualCameraFollow();
         });

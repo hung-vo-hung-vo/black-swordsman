@@ -17,11 +17,12 @@ public class Patrol : State
 
     public override void Check()
     {
-        base.Check();
-
+        // base.Check();
         isWall = entity.CheckWall();
         isLedge = entity.CheckLedge();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+
+        if (isWall || !isLedge) Debug.Log("Patrol:Check: isWall: " + isWall + ", isLedge: " + isLedge);
     }
 
     public override void Enter()
@@ -42,6 +43,7 @@ public class Patrol : State
 
         if (isWall || !isLedge)
         {
+            // Debug.Log("Patrol:LogicUpdate: isWall: " + isWall + ", isLedge: " + isLedge);
             entity.Flip();
             entity.SetVelocityX(data.movementSpeed);
         }

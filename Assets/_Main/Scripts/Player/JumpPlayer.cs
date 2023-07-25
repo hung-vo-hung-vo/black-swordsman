@@ -9,9 +9,11 @@ public class JumpPlayer : MonoBehaviour
 
     enum JumpState { onGround, singleJump, fall }
     JumpState _jumpState;
+    StatAgent _stat;
 
-    public void Init(PlayerDataSO playerData, UnityAction jumpFunc)
+    public void Init(StatAgent stat, PlayerDataSO playerData, UnityAction jumpFunc)
     {
+        _stat = stat;
         _playerData = playerData;
         _jumpFunc = jumpFunc;
     }
@@ -23,14 +25,20 @@ public class JumpPlayer : MonoBehaviour
             return;
         }
 
-        _jumpFunc?.Invoke();
-
         if (_jumpState == JumpState.onGround)
         {
+            _jumpFunc?.Invoke();
             StartCoroutine(IESingleJump());
         }
         else
         {
+            if (_stat.ManaPoint < _playerData.DoubleJumpManaCost)
+            {
+                return;
+            }
+
+            _stat.UpdateMana(-_playerData.DoubleJumpManaCost);
+            _jumpFunc?.Invoke();
             _jumpState = JumpState.fall;
         }
     }

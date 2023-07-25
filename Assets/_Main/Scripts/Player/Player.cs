@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : ApcsNetworkBehaviour
 {
@@ -17,20 +18,19 @@ public class Player : ApcsNetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        _stat.Init(_playerData);
-        _skillAgent.SetSkills(_playerData.GetSkills());
-        _jumper.Init(_playerData, Jump);
         IfIsOwnerThenDo(() =>
         {
+            _stat.Init(_playerData);
+            _skillAgent.Init(_stat, _playerData.GetSkills());
+            _jumper.Init(_stat, _playerData, Jump);
             RegisterInput();
             VirtualCameraFollow();
         });
     }
 
-    public override void OnStopClient()
+    void OnDestroy()
     {
         IfIsOwnerThenDo(UnsubscribeInput);
-        base.OnStopClient();
     }
 
     void RegisterInput()

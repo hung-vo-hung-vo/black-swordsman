@@ -1,25 +1,52 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class StatAgent : MonoBehaviour
+public class StatAgent : MonoBehaviour, IHudable
 {
-    public float HealthPoint { get; private set; }
-    public float ManaPoint { get; private set; }
     public float JumpForce => _jumpForce + (float)_extraJumpForce.Value;
+    public float HealthPoint
+    {
+        get => _healthPoint;
+        private set
+        {
+            _healthPoint = value;
+            OnHealthChanged()?.Invoke(_healthPoint / _data.MaxHealthPoint);
+        }
+    }
+    public float ManaPoint
+    {
+        get => _manaPoint;
+        private set
+        {
+            _manaPoint = value;
+            OnManaChanged()?.Invoke(_manaPoint / _data.MaxManaPoint);
+        }
+    }
+
+    UnityEvent<float> _onHealthChanged = new UnityEvent<float>();
+    UnityEvent<float> _onManaChanged = new UnityEvent<float>();
+
+    public UnityEvent<float> OnHealthChanged() => _onHealthChanged;
+    public UnityEvent<float> OnManaChanged() => _onManaChanged;
 
     float _jumpForce;
     ExtraPoint _extraJumpForce;
+
+    float _healthPoint;
+    float _manaPoint;
 
     PlayerDataSO _data;
 
     public void Init(PlayerDataSO data)
     {
-        HealthPoint = data.MaxHealthPoint;
-        ManaPoint = data.MaxManaPoint;
-
-        _jumpForce = data.JumpForce;
-        _extraJumpForce = new ExtraPoint();
-
         _data = data;
+        FindObjectOfType<Hud>()?.Init(this);
+
+        HealthPoint = _data.MaxHealthPoint;
+        ManaPoint = _data.MaxManaPoint;
+
+        _jumpForce = _data.JumpForce;
+        _extraJumpForce = new ExtraPoint();
     }
 
     public void SetExtraJumpForce(float extra)

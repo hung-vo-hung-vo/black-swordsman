@@ -38,15 +38,7 @@ public class EW_Chase : Chase
         }
         else if (isChaseTimeOver)
         {
-            if (isPlayerInMinAgroRange)
-            {
-                // TODO: Add tired state
-                FSM.ChangeState(enemy.playerDetectedState);
-            }
-            else
-            {
-                FSM.ChangeState(enemy.lookForPlayerState);
-            }
+            FSM.ChangeState(enemy.tiredState);
         }
     }
 }

@@ -9,13 +9,14 @@ public class EvilWizard : Entity
     public EW_PlayerDetected playerDetectedState { get; private set; }
     public EW_Chase chaseState { get; private set; }
     public EW_LookingForPlayer lookForPlayerState { get; private set; }
+    public EW_Tired tiredState { get; private set; }
 
     [SerializeField] private DataIdle idleData;
     [SerializeField] private DataPatrol patrolData;
     [SerializeField] private DataPlayerDeteced playerDetectedData;
     [SerializeField] private ChaseData chaseData;
     [SerializeField] private LookingForPlayerData lookingForPlayerData;
-    [SerializeField] private GameObject noticeSign;
+    [SerializeField] private TiredData tiredData;
 
     public override void Start()
     {
@@ -26,15 +27,8 @@ public class EvilWizard : Entity
         playerDetectedState = new EW_PlayerDetected(this, FSM, "playerDetected", playerDetectedData, this);
         chaseState = new EW_Chase(this, FSM, "chase", chaseData, this);
         lookForPlayerState = new EW_LookingForPlayer(this, FSM, "lookingForPlayer", lookingForPlayerData, this);
+        tiredState = new EW_Tired(this, FSM, "tired", tiredData, this);
 
         FSM.Initialize(patrolState);
-    }
-
-    public void InitSign()
-    {
-        Instantiate(noticeSign,
-                    avatar.transform.position,
-                    Quaternion.Euler(0f, 0f, 0f)
-                   );
     }
 }

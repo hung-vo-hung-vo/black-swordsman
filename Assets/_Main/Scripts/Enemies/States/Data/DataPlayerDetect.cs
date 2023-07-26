@@ -6,4 +6,5 @@ using UnityEngine;
 public class DataPlayerDeteced : ScriptableObject
 {
     public float cdLongRangeSkill = 2f;
+    public GameObject icon = null;
 }

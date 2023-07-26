@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879751678435005783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.112, y: -0.305, z: 0}
+  m_LocalPosition: {x: 0.178, y: -0.311, z: 0}
   m_LocalScale: {x: 0.96464, y: 0.96464, z: 0.96464}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,7 +256,7 @@ MonoBehaviour:
   playerDetectedData: {fileID: 11400000, guid: 1d48d9706556d9f019e079ecc3285302, type: 2}
   chaseData: {fileID: 11400000, guid: 39f78af6177b901f084c612fab7824a9, type: 2}
   lookingForPlayerData: {fileID: 11400000, guid: 6d7abce09969129c2a07bbb79eed4faf, type: 2}
-  noticeSign: {fileID: 707078149017553281, guid: deaebd5161e32e39d99e73c18fde8aae, type: 3}
+  tiredData: {fileID: 11400000, guid: e4cd15d69b85116799c5b46f31cf4df3, type: 2}
 --- !u!1 &8889299846485771775
 GameObject:
   m_ObjectHideFlags: 0

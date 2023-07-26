@@ -7,7 +7,7 @@ public class SignController : MonoBehaviour
     // Start is called before the first frame update
     private void FinishAnim()
     {
-        Debug.Log("Finish anim");
+        // Debug.Log("Finish anim");
         Destroy(gameObject);
     }
 }

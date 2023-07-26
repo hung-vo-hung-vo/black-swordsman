@@ -22,7 +22,7 @@ public class Patrol : State
         isLedge = entity.CheckLedge();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
 
-        if (isWall || !isLedge) Debug.Log("Patrol:Check: isWall: " + isWall + ", isLedge: " + isLedge);
+        // if (isWall || !isLedge) Debug.Log("Patrol:Check: isWall: " + isWall + ", isLedge: " + isLedge);
     }
 
     public override void Enter()

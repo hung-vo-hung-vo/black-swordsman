@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfTurns: 2
   cdTurnTime: 1
+  icon: {fileID: 707078149017553281, guid: b5e11d59ee410c18db297ae968f0b5ba, type: 3}

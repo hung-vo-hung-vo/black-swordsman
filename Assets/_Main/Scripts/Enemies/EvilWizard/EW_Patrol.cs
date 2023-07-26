@@ -33,7 +33,7 @@ public class EW_Patrol : Patrol
         else if (isWall || !isLedge)
         {
             // Debug.Log(isWall + " " + isLedge);
-            Debug.Log("EW_Patrol:LogicUpdate: isWall: " + isWall + ", isLedge: " + isLedge);
+            // Debug.Log("EW_Patrol:LogicUpdate: isWall: " + isWall + ", isLedge: " + isLedge);
             enemy.idleState.SetFlip(true);
             FSM.ChangeState(enemy.idleState);
         }

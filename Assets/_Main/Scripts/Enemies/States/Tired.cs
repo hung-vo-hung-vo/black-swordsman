@@ -1,24 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetected : State
+public class Tired : State
 {
-    protected DataPlayerDeteced data;
+    protected TiredData data;
 
     protected bool isPlayerInMinAgroRange;
     protected bool isPlayerInMaxAgroRange;
-    protected bool canPerformLongRangeSkill;
+    protected bool isTiredTimeOver;
 
-    public PlayerDetected(Entity entity, FiniteStateMachine FSM, string animationName, DataPlayerDeteced data) : base(entity, FSM, animationName)
+    public Tired(Entity entity, FiniteStateMachine FSM, string animationName, TiredData data) : base(entity, FSM, animationName)
     {
         this.data = data;
     }
 
     public override void Check()
     {
-        // base.Check();
+        base.Check();
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
         isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
@@ -28,8 +27,10 @@ public class PlayerDetected : State
     {
         base.Enter();
 
-        canPerformLongRangeSkill = false;
+        isTiredTimeOver = false;
+
         entity.SetVelocityX(0f);
+        entity.InitIcon(data.icon);
     }
 
     public override void Exit()
@@ -41,9 +42,9 @@ public class PlayerDetected : State
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + data.cdLongRangeSkill)
+        if (Time.time >= startTime + data.tiredTime)
         {
-            canPerformLongRangeSkill = true;
+            isTiredTimeOver = true;
         }
     }
 

@@ -79,4 +79,20 @@ public class Entity : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * data.wallCheckDistance));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * data.ledgeCheckDistance));
     }
+
+    public virtual void InitIcon(GameObject icon)
+    {
+        if (!icon)
+        {
+            return;
+        }
+
+        GameObject myIcon = Instantiate(icon,
+                                        avatar.transform.position,
+                                        Quaternion.Euler(0f, 0f, 0f)
+                                        );
+
+        myIcon.transform.SetParent(avatar.transform);
+        // myIcon.transform.rotation = avatar.transform.rotation;
+    }
 }

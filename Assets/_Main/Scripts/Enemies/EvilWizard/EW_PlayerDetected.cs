@@ -15,7 +15,7 @@ public class EW_PlayerDetected : PlayerDetected
     {
         base.Enter();
 
-        enemy.InitSign();
+        enemy.InitIcon(this.data.icon);
     }
 
     public override void LogicUpdate()

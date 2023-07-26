@@ -7,4 +7,5 @@ public class LookingForPlayerData : ScriptableObject
 {
     public int amountOfTurns = 2;
     public float cdTurnTime = 0.75f;
+    public GameObject icon = null;
 }

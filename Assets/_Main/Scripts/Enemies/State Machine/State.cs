@@ -14,12 +14,15 @@ public class State
         this.entity = entity;
         this.FSM = FSM;
         this.animationName = animationName;
+        Check();
     }
 
     public virtual void Enter()
     {
         startTime = Time.time;
         entity.animator.SetBool(animationName, true);
+
+        Check();
     }
 
     public virtual void Exit()
@@ -29,11 +32,15 @@ public class State
 
     public virtual void LogicUpdate()
     {
-
     }
 
     public virtual void PhysicsUpdate()
     {
+        Check();
+    }
 
+    public virtual void Check()
+    {
+        // Debug.Log("State:Check");
     }
 }

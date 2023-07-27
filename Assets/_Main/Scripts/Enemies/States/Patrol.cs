@@ -20,7 +20,7 @@ public class Patrol : State
         // base.Check();
         isWall = entity.CheckWall();
         isLedge = entity.CheckLedge();
-        isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMinAgroRange = entity.CheckPlayerInAgroRange();
 
         // if (isWall || !isLedge) Debug.Log("Patrol:Check: isWall: " + isWall + ", isLedge: " + isLedge);
     }

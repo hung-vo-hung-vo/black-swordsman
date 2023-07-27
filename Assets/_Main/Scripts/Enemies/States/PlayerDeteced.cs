@@ -7,9 +7,10 @@ public class PlayerDetected : State
 {
     protected DataPlayerDeteced data;
 
-    protected bool isPlayerInMinAgroRange;
-    protected bool isPlayerInMaxAgroRange;
+    protected bool isPlayerInAgroRange;
     protected bool canPerformLongRangeSkill;
+    protected bool canPerformCloseRangeSkill;
+    protected bool isLedge;
 
     public PlayerDetected(Entity entity, FiniteStateMachine FSM, string animationName, DataPlayerDeteced data) : base(entity, FSM, animationName)
     {
@@ -20,15 +21,16 @@ public class PlayerDetected : State
     {
         // base.Check();
 
-        isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
-        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
+        isPlayerInAgroRange = entity.CheckPlayerInAgroRange();
+        isLedge = entity.CheckLedge();
+        canPerformCloseRangeSkill = entity.CheckPlayerInCloseRangeAction();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        canPerformLongRangeSkill = false;
+        canPerformLongRangeSkill = true;
         entity.SetVelocityX(0f);
     }
 

@@ -10,6 +10,7 @@ public class Chase : State
     protected bool isLedge;
     protected bool isWall;
     protected bool isChaseTimeOver;
+    protected bool isPlayerInCloseActionRange;
 
     public Chase(Entity entity, FiniteStateMachine FSM, string animationName, ChaseData data) : base(entity, FSM, animationName)
     {
@@ -20,9 +21,10 @@ public class Chase : State
     {
         // base.Check();
 
-        isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMinAgroRange = entity.CheckPlayerInAgroRange();
         isLedge = entity.CheckLedge();
         isWall = entity.CheckWall();
+        isPlayerInCloseActionRange = entity.CheckPlayerInCloseRangeAction();
     }
 
     public override void Enter()

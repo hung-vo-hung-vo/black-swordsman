@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tired : State
+public class Dead : State
 {
-    protected TiredData data;
-
-    protected bool isPlayerInAgroRange;
-    protected bool isTiredTimeOver;
-
-    public Tired(Entity entity, FiniteStateMachine FSM, string animationName, TiredData data) : base(entity, FSM, animationName)
+    private DeadData data;
+    public Dead(Entity entity, FiniteStateMachine FSM, string animationName, DeadData data) : base(entity, FSM, animationName)
     {
         this.data = data;
     }
@@ -17,18 +13,16 @@ public class Tired : State
     public override void Check()
     {
         base.Check();
-
-        isPlayerInAgroRange = entity.CheckPlayerInAgroRange();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        isTiredTimeOver = false;
-
         entity.SetVelocityX(0f);
-        entity.InitIcon(data.icon);
+        // entity.InitIcon(data.icon);
+
+        entity.a2s.deadState = this;
     }
 
     public override void Exit()
@@ -39,15 +33,15 @@ public class Tired : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (Time.time >= startTime + data.tiredTime)
-        {
-            isTiredTimeOver = true;
-        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public virtual void FinishDead()
+    {
+        entity.gameObject.transform.parent.gameObject.SetActive(false);
     }
 }

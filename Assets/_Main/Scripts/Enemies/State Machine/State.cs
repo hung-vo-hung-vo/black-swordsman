@@ -32,7 +32,6 @@ public class State
 
     public virtual void LogicUpdate()
     {
-
     }
 
     public virtual void PhysicsUpdate()
@@ -42,6 +41,6 @@ public class State
 
     public virtual void Check()
     {
-        Debug.Log("State:Check");
+        // Debug.Log("State:Check");
     }
 }

@@ -30,7 +30,11 @@ public class EW_Chase : Chase
     {
         base.LogicUpdate();
 
-        if (!isLedge || isWall)
+        if (isPlayerInCloseActionRange)
+        {
+            FSM.ChangeState(enemy.attackState);
+        }
+        else if (!isLedge || isWall)
         {
             // Debug.Log("EW_Chase:LogicUpdate: isLedge: " + isLedge + ", isWall: " + isWall);
             // enemy.SetVelocityX(0f);

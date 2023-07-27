@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tired : State
+public class TakeHit : State
 {
-    protected TiredData data;
+    public TakeHitData data { get; private set; }
 
     protected bool isPlayerInAgroRange;
-    protected bool isTiredTimeOver;
+    protected bool isGround;
 
-    public Tired(Entity entity, FiniteStateMachine FSM, string animationName, TiredData data) : base(entity, FSM, animationName)
+    public TakeHit(Entity entity, FiniteStateMachine FSM, string animationName, TakeHitData data) : base(entity, FSM, animationName)
     {
         this.data = data;
     }
@@ -19,16 +19,14 @@ public class Tired : State
         base.Check();
 
         isPlayerInAgroRange = entity.CheckPlayerInAgroRange();
+        isGround = entity.CheckGround();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        isTiredTimeOver = false;
-
-        entity.SetVelocityX(0f);
-        entity.InitIcon(data.icon);
+        // finishAnim = false;
     }
 
     public override void Exit()
@@ -40,14 +38,20 @@ public class Tired : State
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + data.tiredTime)
-        {
-            isTiredTimeOver = true;
-        }
+        // if (isGround)
+        // {
+        //     entity.SetVelocityX(0f);
+        //     entity.SetVelocityY(0f);
+        // }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
+
+    // public void FinishTakeHit()
+    // {
+    //     // finishAnim = true;
+    // }
 }

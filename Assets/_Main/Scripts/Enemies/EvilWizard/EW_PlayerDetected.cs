@@ -22,11 +22,15 @@ public class EW_PlayerDetected : PlayerDetected
     {
         base.LogicUpdate();
 
-        if (canPerformLongRangeSkill)
+        if (canPerformCloseRangeSkill)
+        {
+            FSM.ChangeState(enemy.attackState);
+        }
+        else if (canPerformLongRangeSkill)
         {
             FSM.ChangeState(enemy.chaseState);
         }
-        else if (!isPlayerInMaxAgroRange)
+        else if (!isPlayerInAgroRange)
         {
             FSM.ChangeState(enemy.lookForPlayerState);
         }

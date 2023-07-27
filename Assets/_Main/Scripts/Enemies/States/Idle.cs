@@ -22,7 +22,7 @@ public class Idle : State
     {
         // base.Check();
 
-        isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMinAgroRange = entity.CheckPlayerInAgroRange();
     }
     public override void Enter()
     {

@@ -25,9 +25,15 @@ public class EW_Patrol : Patrol
     {
         base.LogicUpdate();
 
-        if (isWall || !isLedge)
+        if (isPlayerInMinAgroRange)
+        {
+            // enemy.idleState.SetFlip(false);
+            FSM.ChangeState(enemy.playerDetectedState);
+        }
+        else if (isWall || !isLedge)
         {
             // Debug.Log(isWall + " " + isLedge);
+            // Debug.Log("EW_Patrol:LogicUpdate: isWall: " + isWall + ", isLedge: " + isLedge);
             enemy.idleState.SetFlip(true);
             FSM.ChangeState(enemy.idleState);
         }

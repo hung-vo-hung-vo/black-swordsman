@@ -8,10 +8,21 @@ public class Patrol : State
 
     protected bool isWall;
     protected bool isLedge;
+    protected bool isPlayerInMinAgroRange;
 
     public Patrol(Entity entity, FiniteStateMachine FSM, string animationName, DataPatrol data) : base(entity, FSM, animationName)
     {
         this.data = data;
+    }
+
+    public override void Check()
+    {
+        // base.Check();
+        isWall = entity.CheckWall();
+        isLedge = entity.CheckLedge();
+        isPlayerInMinAgroRange = entity.CheckPlayerInAgroRange();
+
+        // if (isWall || !isLedge) Debug.Log("Patrol:Check: isWall: " + isWall + ", isLedge: " + isLedge);
     }
 
     public override void Enter()
@@ -30,11 +41,9 @@ public class Patrol : State
     {
         base.LogicUpdate();
 
-        isWall = entity.CheckWall();
-        isLedge = entity.CheckLedge();
-
         if (isWall || !isLedge)
         {
+            // Debug.Log("Patrol:LogicUpdate: isWall: " + isWall + ", isLedge: " + isLedge);
             entity.Flip();
             entity.SetVelocityX(data.movementSpeed);
         }

@@ -8,7 +8,6 @@ public class Idle : State
     protected DataIdle data;
     protected bool flip;
     protected bool isIdleTimeOver;
-    protected bool isPlayerInMinAgroRange;
 
     protected float idleTime;
 
@@ -17,13 +16,6 @@ public class Idle : State
         this.data = data;
     }
 
-
-    public override void Check()
-    {
-        // base.Check();
-
-        isPlayerInMinAgroRange = entity.CheckPlayerInAgroRange();
-    }
     public override void Enter()
     {
         base.Enter();
@@ -38,10 +30,10 @@ public class Idle : State
     {
         base.Exit();
 
-        // if (flip)
-        // {
-        //     entity.Flip();
-        // }
+        if (flip)
+        {
+            entity.Flip();
+        }
     }
 
     public override void LogicUpdate()
@@ -64,7 +56,6 @@ public class Idle : State
     {
         this.flip = flip;
     }
-
     private void SetRandomIdleTime()
     {
         idleTime = UnityEngine.Random.Range(data.minTime, data.maxTime);

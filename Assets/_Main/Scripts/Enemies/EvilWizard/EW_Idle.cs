@@ -15,7 +15,12 @@ public class EW_Idle : Idle
     {
         base.LogicUpdate();
 
-        if (isIdleTimeOver)
+        if (isPlayerInMinAgroRange)
+        {
+            // isIdleTimeOver = true;
+            FSM.ChangeState(enemy.playerDetectedState);
+        }
+        else if (isIdleTimeOver)
         {
             // Debug.Log("Idle time over");
             FSM.ChangeState(enemy.patrolState);

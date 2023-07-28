@@ -33,9 +33,21 @@ public class StatAgent : MonoBehaviour, IHudable
     ExtraPoint _extraJumpForce;
 
     float _healthPoint;
+
     float _manaPoint;
+    float _manaAutoHealDelay = 0f;
 
     PlayerDataSO _data;
+
+    private void Update()
+    {
+        _manaAutoHealDelay += Time.deltaTime;
+        if (_manaAutoHealDelay >= _data.ManaAutoHealDelay)
+        {
+            UpdateMana(_data.ManaAutoHeal);
+            _manaAutoHealDelay = 0f;
+        }
+    }
 
     public void Init(PlayerDataSO data)
     {

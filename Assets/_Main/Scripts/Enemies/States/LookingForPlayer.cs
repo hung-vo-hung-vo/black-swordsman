@@ -36,6 +36,7 @@ public class LookingForPlayer : State
         canTurn = false;
 
         entity.SetVelocityX(0f);
+        entity.SetVelocityY(0f);
 
         entity.InitIcon(data.icon);
     }

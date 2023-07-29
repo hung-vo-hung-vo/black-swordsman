@@ -46,7 +46,7 @@ public class EvilWizard : Entity
     {
         base.ReceiveDamage(attackStats);
 
-        if (CheckGround() && !attackState.isPerformingAttack)
+        if (CheckGround()) //  && !attackState.isPerformingAttack
         {
             // Debug.Log("fly");
             Knockback(takeHitData.knockbackSpeed, takeHitData.angle, lastDamageDirection);

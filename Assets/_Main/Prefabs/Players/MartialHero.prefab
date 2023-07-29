@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 6337863150496266889}
   - component: {fileID: 2387510086461762423}
   - component: {fileID: 7492745817146975536}
+  - component: {fileID: 1045154511920174484}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -188,6 +189,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1045154511920174484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612774516796089340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e59416e884cb0d78ae0fce5570a2a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skill: {fileID: 1030602498248412155}
 --- !u!1 &6062968729716802832
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,20 @@ public class SkillAgent : MonoBehaviour
 
     public float Damage => _curSkill.damage + (float)_extraDamage.Value;
 
+    private void Update()
+    {
+        if (_attackSemaphore)
+        {
+            var cldBounds = _damageCollier.bounds;
+            var enemies = Physics2D.OverlapCircleAll(cldBounds.center, cldBounds.extents.x, LayerMask.GetMask(ApcsLayerMask.DAMAGEABLE_ENEMY));
+            foreach (var e in enemies)
+            {
+                var atk = new AttackStats(new Vector2(cldBounds.center.x, cldBounds.center.y), Damage);
+                e.gameObject.transform.parent.gameObject.SendMessage(Messages.ENEMY_RECEIVE_DAMAGE, atk);
+            }
+        }
+    }
+
     public void Init(StatAgent stat, Dictionary<int, SkillData> skills)
     {
         _stat = stat;
@@ -30,16 +44,6 @@ public class SkillAgent : MonoBehaviour
     public void Attack(int skill)
     {
         StartCoroutine(IEAttack(skill));
-
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(_damageCollier.bounds.center, _damageCollier.bounds.extents.x, LayerMask.GetMask("Damageable"));
-
-        // Debug.Log("Attack: " + enemies.Length);
-
-        foreach (Collider2D enemy in enemies)
-        {
-            // AttackStats stats = (AttackStats)();
-            enemy.gameObject.transform.parent.gameObject.SendMessage("ReceiveDamage", new AttackStats(new Vector2(_damageCollier.bounds.center.x, _damageCollier.bounds.center.y), Damage));
-        }
     }
 
     IEnumerator IEAttack(int skill)
@@ -62,9 +66,4 @@ public class SkillAgent : MonoBehaviour
         yield return new WaitForSeconds(_curSkill.delayTime);
         _attackSemaphore = _damageCollier.enabled = false;
     }
-
-    // public void OnTriggerEnter()
-    // {
-
-    // }
 }

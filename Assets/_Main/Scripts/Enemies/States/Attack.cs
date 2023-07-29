@@ -30,7 +30,7 @@ public class Attack : State
         entity.SetVelocityX(0f);
         entity.SetVelocityY(0f);
         finished = false;
-        isPerformingAttack = true;
+        // isPerformingAttack = true;
     }
 
     public override void Exit()
@@ -50,7 +50,7 @@ public class Attack : State
 
     public virtual void TriggerAttack()
     {
-
+        isPerformingAttack = true;
     }
 
     public virtual void FinishAttack()

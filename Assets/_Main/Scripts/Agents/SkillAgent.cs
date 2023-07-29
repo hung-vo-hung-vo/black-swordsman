@@ -36,31 +36,22 @@ public class SkillAgent : MonoBehaviour
 
     public void Attack(int skill)
     {
-        StartCoroutine(IEAttack(skill));
-    }
-
-    IEnumerator IEAttack(int skill)
-    {
         if (!_skills.ContainsKey(skill) || _attackSemaphore)
         {
-            yield break;
+            return;
         }
 
         if (_stat.ManaPoint < _skills[skill].manaCost)
         {
-            yield break;
+            return;
         }
 
         _curSkill = _skills[skill];
         _stat.UpdateMana(-_curSkill.manaCost);
         _animator.SetTrigger(AnimationParam.Attack + skill.ToString());
-
-        SetAttackStatus(true);
-        yield return new WaitForSeconds(_curSkill.delayTime);
-        SetAttackStatus(false);
     }
 
-    void SetAttackStatus(bool status)
+    public void SetAttackStatus(bool status)
     {
         _attackSemaphore = _damageCollier.enabled = status;
     }

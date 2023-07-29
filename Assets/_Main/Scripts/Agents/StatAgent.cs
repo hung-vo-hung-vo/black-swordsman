@@ -41,6 +41,11 @@ public class StatAgent : MonoBehaviour, IHudable
 
     private void Update()
     {
+        if (_data == null)
+        {
+            return;
+        }
+
         _manaAutoHealDelay += Time.deltaTime;
         if (_manaAutoHealDelay >= _data.ManaAutoHealDelay)
         {

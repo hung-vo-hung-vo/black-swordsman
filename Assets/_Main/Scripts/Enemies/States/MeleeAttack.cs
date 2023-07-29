@@ -48,7 +48,7 @@ public class MeleeAttack : Attack
 
         foreach (Collider2D player in hit)
         {
-            player.transform.SendMessage("TakeDamage", stats);
+            player.transform.SendMessage(Messages.PLAYER_TAKE_DAMAGE, stats);
         }
     }
 }

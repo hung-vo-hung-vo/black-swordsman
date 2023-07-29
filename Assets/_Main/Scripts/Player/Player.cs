@@ -32,6 +32,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             _jumper.Init(_stat, _playerData, Jump);
 
             OnDie().AddListener(UnsubscribeInput);
+            OnDie().AddListener(_body.Sleep);
             OnDie().AddListener(() => _animator.SetTrigger(AnimationParam.Death));
 
             OnTakeDamage().AddListener(() => _animator.SetTrigger(AnimationParam.TakeHit));

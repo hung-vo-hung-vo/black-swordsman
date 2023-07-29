@@ -57,3 +57,6 @@ TagManager:
   - name: Front
     uniqueID: 3113272821
     locked: 0
+  - name: InGameUI
+    uniqueID: 2022997127
+    locked: 0

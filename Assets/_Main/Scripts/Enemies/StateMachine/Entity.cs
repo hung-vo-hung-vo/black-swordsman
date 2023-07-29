@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class Entity : ApcsNetworkBehaviour
+public class Entity : ApcsNetworkBehaviour, IHudable
 {
     public DataEntity data;
     public FiniteStateMachine FSM;
@@ -21,10 +23,34 @@ public class Entity : ApcsNetworkBehaviour
     private Transform groundCheck;
     private Vector2 velocity;
 
-    private float currHealth;
-    private float lastDamageTime;
+    [SerializeField] Slider _healthSlider;
 
+    float _curHealth;
+    private float CurHealth
+    {
+        get => _curHealth;
+        set
+        {
+            _curHealth = value;
+            OnHealthChanged()?.Invoke(_curHealth);
+        }
+    }
+
+    private float lastDamageTime;
     protected bool isDead;
+
+    UnityEvent<float> _onHealthChanged = new UnityEvent<float>();
+
+    public UnityEvent<float> OnHealthChanged() => _onHealthChanged;
+    public UnityEvent<float> OnManaChanged() => null;
+
+    private void Awake()
+    {
+        OnHealthChanged().AddListener((curHP) =>
+        {
+            _healthSlider.value = curHP / data.maxHealth;
+        });
+    }
 
     public virtual void Start()
     {
@@ -35,7 +61,7 @@ public class Entity : ApcsNetworkBehaviour
         animator = avatar.GetComponent<Animator>();
         a2s = avatar.GetComponent<Anim2State>();
 
-        currHealth = data.maxHealth;
+        CurHealth = data.maxHealth;
         lastDamageTime = Time.time;
 
         isDead = false;
@@ -114,7 +140,7 @@ public class Entity : ApcsNetworkBehaviour
 
     public virtual void ReceiveDamage(AttackStats attackStats)
     {
-        currHealth -= attackStats.damage;
+        CurHealth -= attackStats.damage;
 
         lastDamageTime = Time.time;
         lastDamageDirection = attackStats.position.x > avatar.transform.position.x ? -1 : 1;
@@ -122,7 +148,7 @@ public class Entity : ApcsNetworkBehaviour
         // Hop(data.damageHopSpeed);
         // Knockback(data.damageKnockbackSpeed, data.damageKnockbackAngle, lastDamageDirection)
 
-        isDead = currHealth <= 0;
+        isDead = CurHealth <= 0;
 
         // TODO: Hit particle
     }

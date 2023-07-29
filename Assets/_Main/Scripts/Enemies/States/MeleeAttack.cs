@@ -7,6 +7,8 @@ public class MeleeAttack : Attack
     protected MeleeAttackData data;
     protected AttackStats stats;
 
+    protected bool isGround;
+
     public MeleeAttack(Entity entity, FiniteStateMachine FSM, string animationName, Transform attackPosition, MeleeAttackData data) : base(entity, FSM, animationName, attackPosition)
     {
         this.data = data;
@@ -15,6 +17,8 @@ public class MeleeAttack : Attack
     public override void Check()
     {
         base.Check();
+
+        isGround = entity.CheckGround();
     }
 
     public override void Enter()

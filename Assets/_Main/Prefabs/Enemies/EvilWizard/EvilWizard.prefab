@@ -69,6 +69,7 @@ Transform:
   - {fileID: 1092809000188922250}
   - {fileID: 5746024117385199090}
   - {fileID: 9131755330752103128}
+  - {fileID: 373735742780639674}
   m_Father: {fileID: 3188316309670549704}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,7 +344,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2963685244970012537}
-  - {fileID: 373735742780639674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -367,6 +367,7 @@ MonoBehaviour:
   ledgeCheck: {fileID: 8208547201206278502}
   playerCheck: {fileID: 1092809000188922250}
   groundCheck: {fileID: 5746024117385199090}
+  _hud: {fileID: 3695462714317601382}
   _healthSlider: {fileID: 195052300407804095}
   idleData: {fileID: 11400000, guid: 915bf6d0e37a5919385268c5838b5033, type: 2}
   patrolData: {fileID: 11400000, guid: 0dab7d6fe2bec9ec79e33ab97eefc4de, type: 2}
@@ -471,16 +472,16 @@ RectTransform:
   m_GameObject: {fileID: 9162593486903349863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 1}
+  m_LocalScale: {x: 0.0025, y: 0.0025, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1993796191852840741}
-  m_Father: {fileID: 3188316309670549704}
+  m_Father: {fileID: 2963685244970012537}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.25}
   m_SizeDelta: {x: 192, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3695462714317601382

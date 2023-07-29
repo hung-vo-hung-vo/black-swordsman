@@ -62,4 +62,15 @@ public class EvilWizard : Entity
             FSM.ChangeState(takeHitState);
         }
     }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+#if UNITY_EDITOR
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPosition.position, attackData.radius);
+        Gizmos.color = Color.white;
+#endif
+    }
 }

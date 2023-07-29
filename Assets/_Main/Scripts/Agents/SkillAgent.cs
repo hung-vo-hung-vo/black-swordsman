@@ -17,6 +17,11 @@ public class SkillAgent : MonoBehaviour
     Vector3 _dmgCldBoundsCenter => _damageCollier.bounds.center;
     AttackStats _atk => new AttackStats(_dmgCldBoundsCenter, Damage);
 
+    private void Awake()
+    {
+        SetAttackStatus(false);
+    }
+
     public void Init(StatAgent stat, Dictionary<int, SkillData> skills)
     {
         _stat = stat;

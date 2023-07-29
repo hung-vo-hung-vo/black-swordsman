@@ -17,7 +17,11 @@ public class EW_MeleeAttack : MeleeAttack
 
         if (finished)
         {
-            if (isPlayerInMinAgroRange)
+            if (!isGround)
+            {
+                FSM.ChangeState(enemy.takeHitState);
+            }
+            else if (isPlayerInMinAgroRange)
             {
                 FSM.ChangeState(enemy.playerDetectedState);
             }

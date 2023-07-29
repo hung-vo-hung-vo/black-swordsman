@@ -135,6 +135,7 @@ public class Entity : ApcsNetworkBehaviour
 
     public virtual void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * data.wallCheckDistance));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * data.ledgeCheckDistance));
 
@@ -142,6 +143,7 @@ public class Entity : ApcsNetworkBehaviour
         Gizmos.DrawLine(groundCheck.position,
                         groundCheck.position + (Vector3)(Vector2.down * data.groundCheckLength)
                         );
+#endif
     }
 
     public virtual void InitIcon(GameObject icon)

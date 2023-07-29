@@ -4,4 +4,5 @@ public interface IHealthable
 {
     UnityEvent OnDie();
     UnityEvent OnTakeDamage();
+    bool IsDead();
 }

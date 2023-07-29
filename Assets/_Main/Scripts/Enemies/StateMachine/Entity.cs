@@ -119,7 +119,8 @@ public class Entity : ApcsNetworkBehaviour, IHudable
 
     public virtual bool CheckPlayerInAgroRange()
     {
-        return Physics2D.Raycast(playerCheck.position, avatar.transform.right, data.agroRange, data.playerLayer);
+        var hit = Physics2D.Raycast(playerCheck.position, avatar.transform.right, data.agroRange, data.playerLayer);
+        return CheckPlayerHit(hit);
     }
 
     public virtual bool CheckGround()
@@ -131,7 +132,8 @@ public class Entity : ApcsNetworkBehaviour, IHudable
 
     public virtual bool CheckPlayerInCloseRangeAction()
     {
-        return Physics2D.Raycast(playerCheck.position, avatar.transform.right, data.closeRangeActionDistance, data.playerLayer);
+        var hit = Physics2D.Raycast(playerCheck.position, avatar.transform.right, data.closeRangeActionDistance, data.playerLayer);
+        return CheckPlayerHit(hit);
     }
 
     // public virtual void Hop(float velocity)
@@ -195,4 +197,20 @@ public class Entity : ApcsNetworkBehaviour, IHudable
     // {
     //     gameObject.SetActive(false);
     // }
+
+    bool CheckPlayerHit(RaycastHit2D hit)
+    {
+        if (hit.collider == null)
+        {
+            return false;
+        }
+
+        var player = hit.collider.gameObject.GetComponent<Player>();
+        if (player == null)
+        {
+            return false;
+        }
+
+        return !player.IsDead();
+    }
 }

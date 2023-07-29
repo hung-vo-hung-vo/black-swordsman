@@ -18,9 +18,11 @@ public class Player : ApcsNetworkBehaviour, IHealthable
 
     public UnityEvent OnDie() => _onDie;
     public UnityEvent OnTakeDamage() => _onTakeDamage;
+    public bool IsDead() => _isDead;
 
     UnityEvent _onDie = new UnityEvent();
     UnityEvent _onTakeDamage = new UnityEvent();
+    bool _isDead = false;
 
     public override void OnStartClient()
     {
@@ -31,6 +33,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             _skillAgent.Init(_stat, _playerData.GetSkills());
             _jumper.Init(_stat, _playerData, Jump);
 
+            OnDie().AddListener(() => _isDead = true);
             OnDie().AddListener(UnsubscribeInput);
             OnDie().AddListener(_body.Sleep);
             OnDie().AddListener(() => _animator.SetTrigger(AnimationParam.Death));

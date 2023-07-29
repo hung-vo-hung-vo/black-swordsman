@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : ApcsNetworkBehaviour
 {
     public DataEntity data;
     public FiniteStateMachine FSM;

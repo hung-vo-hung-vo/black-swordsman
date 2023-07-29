@@ -357,6 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44ff6a997f92f6f0b6b7a935b32cc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   data: {fileID: 11400000, guid: 2fc1d3b10802c5179b3e09c860033458, type: 2}
   wallCheck: {fileID: 7383560587142975156}
   ledgeCheck: {fileID: 8208547201206278502}

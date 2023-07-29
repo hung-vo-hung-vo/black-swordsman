@@ -11,11 +11,13 @@ public class SkillAgent : MonoBehaviour
     Dictionary<int, SkillData> _skills;
     SkillData _curSkill;
     ExtraPoint _extraDamage;
+    StatAgent _stat;
 
     public float Damage => _curSkill.damage + (float)_extraDamage.Value;
 
-    public void SetSkills(Dictionary<int, SkillData> skills)
+    public void Init(StatAgent stat, Dictionary<int, SkillData> skills)
     {
+        _stat = stat;
         _skills = skills;
         _extraDamage = new ExtraPoint();
     }
@@ -47,7 +49,13 @@ public class SkillAgent : MonoBehaviour
             yield break;
         }
 
+        if (_stat.ManaPoint < _skills[skill].manaCost)
+        {
+            yield break;
+        }
+
         _curSkill = _skills[skill];
+        _stat.UpdateMana(-_curSkill.manaCost);
         _animator.SetTrigger(AnimationParam.Attack + skill.ToString());
 
         _attackSemaphore = _damageCollier.enabled = true;

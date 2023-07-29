@@ -50,7 +50,11 @@ public class Attack : State
 
     public virtual void TriggerAttack()
     {
+<<<<<<< HEAD
         isPerformingAttack = true;
+=======
+
+>>>>>>> main
     }
 
     public virtual void FinishAttack()

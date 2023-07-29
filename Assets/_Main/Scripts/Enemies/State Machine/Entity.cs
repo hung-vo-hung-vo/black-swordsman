@@ -139,7 +139,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * data.ledgeCheckDistance));
 
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * data.closeRangeActionDistance), 1f);
-
         Gizmos.DrawLine(groundCheck.position,
                         groundCheck.position + (Vector3)(Vector2.down * data.groundCheckLength)
                         );

@@ -1,10 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : ApcsNetworkBehaviour
+public class Player : ApcsNetworkBehaviour, IHealthable
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] Animator _animator;
@@ -15,6 +16,12 @@ public class Player : ApcsNetworkBehaviour
     [SerializeField] StatAgent _stat;
     [SerializeField] Inventory _inventory;
 
+    public UnityEvent OnDie() => _onDie;
+    public UnityEvent OnTakeDamage() => _onTakeDamage;
+
+    UnityEvent _onDie = new UnityEvent();
+    UnityEvent _onTakeDamage = new UnityEvent();
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -23,6 +30,13 @@ public class Player : ApcsNetworkBehaviour
             _stat.Init(_playerData);
             _skillAgent.Init(_stat, _playerData.GetSkills());
             _jumper.Init(_stat, _playerData, Jump);
+
+            OnDie().AddListener(UnsubscribeInput);
+            OnDie().AddListener(() => _animator.SetTrigger(AnimationParam.Death));
+
+            OnTakeDamage().AddListener(() => _animator.SetTrigger(AnimationParam.TakeHit));
+            OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));
+
             RegisterInput();
             VirtualCameraFollow();
         });
@@ -53,6 +67,17 @@ public class Player : ApcsNetworkBehaviour
     {
         var virCam = FindObjectOfType<CinemachineVirtualCamera>();
         virCam.Follow = transform;
+    }
+
+    IEnumerator IEShock()
+    {
+        UnsubscribeInput();
+
+        var knockBack = ((_avatar.flipX ? Vector2.right : Vector2.left) + Vector2.up * 3).normalized * _playerData.ShockForce;
+        _body.AddForce(knockBack, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(_playerData.ShockTime);
+        RegisterInput();
     }
 
     public void Run(int dir)
@@ -88,12 +113,11 @@ public class Player : ApcsNetworkBehaviour
         {
             if (_stat.HealthPoint <= 0)
             {
-                _animator.SetTrigger(AnimationParam.Death);
-                IfIsOwnerThenDo(UnsubscribeInput);
+                _onDie?.Invoke();
             }
             else
             {
-                _animator.SetTrigger(AnimationParam.TakeHit);
+                _onTakeDamage?.Invoke();
             }
         }
     }

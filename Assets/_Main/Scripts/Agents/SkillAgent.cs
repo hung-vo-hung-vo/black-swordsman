@@ -14,20 +14,8 @@ public class SkillAgent : MonoBehaviour
     StatAgent _stat;
 
     public float Damage => _curSkill.damage + (float)_extraDamage.Value;
-
-    private void Update()
-    {
-        if (_attackSemaphore)
-        {
-            var cldBounds = _damageCollier.bounds;
-            var enemies = Physics2D.OverlapCircleAll(cldBounds.center, cldBounds.extents.x, LayerMask.GetMask(ApcsLayerMask.DAMAGEABLE_ENEMY));
-            foreach (var e in enemies)
-            {
-                var atk = new AttackStats(new Vector2(cldBounds.center.x, cldBounds.center.y), Damage);
-                e.gameObject.transform.parent.gameObject.SendMessage(Messages.ENEMY_RECEIVE_DAMAGE, atk);
-            }
-        }
-    }
+    Vector3 _dmgCldBoundsCenter => _damageCollier.bounds.center;
+    AttackStats _atk => new AttackStats(_dmgCldBoundsCenter, Damage);
 
     public void Init(StatAgent stat, Dictionary<int, SkillData> skills)
     {
@@ -62,8 +50,22 @@ public class SkillAgent : MonoBehaviour
         _stat.UpdateMana(-_curSkill.manaCost);
         _animator.SetTrigger(AnimationParam.Attack + skill.ToString());
 
-        _attackSemaphore = _damageCollier.enabled = true;
+        SetAttackStatus(true);
         yield return new WaitForSeconds(_curSkill.delayTime);
-        _attackSemaphore = _damageCollier.enabled = false;
+        SetAttackStatus(false);
+    }
+
+    void SetAttackStatus(bool status)
+    {
+        _attackSemaphore = _damageCollier.enabled = status;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DAMAGEABLE_ENEMY))
+        {
+            other.gameObject.transform.parent.gameObject.SendMessage(Messages.ENEMY_RECEIVE_DAMAGE, _atk);
+            SetAttackStatus(false);
+        }
     }
 }

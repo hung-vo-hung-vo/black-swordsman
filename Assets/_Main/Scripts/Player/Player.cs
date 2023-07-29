@@ -82,13 +82,14 @@ public class Player : ApcsNetworkBehaviour
         _skillAgent.Attack(skill);
     }
 
-    public void TakeHit(float damage)
+    public void TakeDamage(AttackStats attack)
     {
-        if (_stat.UpdateHealth(-damage))
+        if (_stat.UpdateHealth(-attack.damage))
         {
             if (_stat.HealthPoint <= 0)
             {
                 _animator.SetTrigger(AnimationParam.Death);
+                IfIsOwnerThenDo(UnsubscribeInput);
             }
             else
             {

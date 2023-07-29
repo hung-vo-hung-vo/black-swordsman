@@ -23,6 +23,7 @@ public class Entity : ApcsNetworkBehaviour, IHudable
     private Transform groundCheck;
     private Vector2 velocity;
 
+    [SerializeField] Canvas _hud;
     [SerializeField] Slider _healthSlider;
 
     float _curHealth;
@@ -46,6 +47,7 @@ public class Entity : ApcsNetworkBehaviour, IHudable
 
     private void Awake()
     {
+        _hud.worldCamera = Camera.main;
         OnHealthChanged().AddListener((curHP) =>
         {
             _healthSlider.value = curHP / data.maxHealth;
@@ -157,6 +159,7 @@ public class Entity : ApcsNetworkBehaviour, IHudable
     {
         facingDirection *= -1;
         avatar.transform.Rotate(0f, 180f, 0f);
+        _hud.transform.Rotate(0f, 180f, 0f);
     }
 
     public virtual void OnDrawGizmos()

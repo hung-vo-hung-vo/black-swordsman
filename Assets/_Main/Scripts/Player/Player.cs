@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class Player : ApcsNetworkBehaviour, IHealthable
 {
     [SerializeField] PlayerDataSO _playerData;
-    [SerializeField] Animator _animator;
+    [SerializeField] AnimationAgent _anim;
     [SerializeField] Rigidbody2D _body;
     [SerializeField] SpriteRenderer _avatar;
     [SerializeField] SkillAgent _skillAgent;
@@ -36,9 +36,9 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             OnDie().AddListener(() => _isDead = true);
             OnDie().AddListener(UnsubscribeInput);
             OnDie().AddListener(_body.Sleep);
-            OnDie().AddListener(() => _animator.SetTrigger(AnimationParam.Death));
+            OnDie().AddListener(() => _anim.SetTrigger(AnimationParam.Death));
 
-            OnTakeDamage().AddListener(() => _animator.SetTrigger(AnimationParam.TakeHit));
+            OnTakeDamage().AddListener(() => _anim.SetTrigger(AnimationParam.TakeHit));
             OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));
 
             RegisterInput();
@@ -86,7 +86,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
 
     public void Run(int dir)
     {
-        _animator.SetBool(AnimationParam.Run, dir != 0);
+        _anim.SetBool(AnimationParam.Run, dir != 0);
 
         if (dir == 0)
         {
@@ -102,7 +102,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
 
     void Jump()
     {
-        _animator.SetTrigger(AnimationParam.Jump);
+        _anim.SetTrigger(AnimationParam.Jump);
         _body.AddForce(Vector2.up * _playerData.JumpForce, ForceMode2D.Impulse);
     }
 

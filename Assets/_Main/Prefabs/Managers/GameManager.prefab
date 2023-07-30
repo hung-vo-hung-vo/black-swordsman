@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634fe9edf686f5d12bc63fba0046de22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serverIP: 
-  _serverPort: 0
+  _serverIP: 35.213.166.47
+  _serverPort: 5555

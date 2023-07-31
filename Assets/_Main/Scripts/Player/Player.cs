@@ -37,6 +37,11 @@ public class Player : MonoBehaviour, IHealthable
         OnDie().AddListener(UnsubscribeInput);
         OnDie().AddListener(_body.Sleep);
         OnDie().AddListener(() => _anim.SetTrigger(AnimationParam.Death));
+        OnDie().AddListener(() =>
+        {
+            var menu = FindObjectOfType<Menu>();
+            menu?.Open();
+        });
 
         OnTakeDamage().AddListener(() => _anim.SetTrigger(AnimationParam.TakeHit));
         OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));

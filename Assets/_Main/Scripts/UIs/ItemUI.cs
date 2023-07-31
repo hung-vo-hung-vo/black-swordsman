@@ -12,7 +12,7 @@ public class ItemUI : MonoBehaviour
     public void SetItem(ItemSO data, int number)
     {
         _data = data;
-        _icon.sprite = _data.Icon;
-        _number.text = number.ToString();
+        _icon.sprite = _data == null ? null : _data.Icon;
+        _number.text = _data == null ? string.Empty : number.ToString();
     }
 }

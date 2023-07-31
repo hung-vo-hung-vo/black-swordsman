@@ -32,6 +32,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             _stat.Init(_playerData);
             _skillAgent.Init(_stat, _playerData.GetSkills());
             _jumper.Init(_stat, _playerData, Jump);
+            _inventory.SetupUI();
 
             OnDie().AddListener(() => _isDead = true);
             OnDie().AddListener(UnsubscribeInput);

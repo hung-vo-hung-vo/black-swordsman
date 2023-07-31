@@ -13,8 +13,6 @@ public class StoryGameManager : Singleton<StoryGameManager>
     List<string> _completedLevels;
     string _currentLevel;
 
-    const bool IS_DEBUG = true;
-
     protected override void Awake()
     {
         base.Awake();
@@ -35,7 +33,7 @@ public class StoryGameManager : Singleton<StoryGameManager>
             return null;
         }
 
-        _currentLevel = levels[IS_DEBUG ? 0 : Random.Range(0, levels.Count)];
+        _currentLevel = levels[GameManager.IsDebug() ? 0 : Random.Range(0, levels.Count)];
         return _currentLevel;
     }
 

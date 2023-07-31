@@ -1845,6 +1845,10 @@ PrefabInstance:
       propertyPath: m_ChunkCullingBounds.y
       value: 5.1666665
       objectReference: {fileID: 0}
+    - target: {fileID: 5335927308748299575, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 5390396274689767333, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: m_Name
       value: LevelCore
@@ -1916,6 +1920,10 @@ PrefabInstance:
     - target: {fileID: 8616449903304275177, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947015798025759279, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27
       objectReference: {fileID: 0}
     - target: {fileID: 9062741895847569839, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size

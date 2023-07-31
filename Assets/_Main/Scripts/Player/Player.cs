@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using FishNet;
 using FishNet.Object;
+using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -158,6 +160,30 @@ public class Player : ApcsNetworkBehaviour, IHealthable
         if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DEATH))
         {
             TakeDamage(new AttackStats() { damage = _stat.HealthPoint });
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.SCENE_LOAD))
+        {
+            InstanceFinder.ClientManager.StopConnection();
+        }
+    }
+
+    public override void OnStopClient()
+    {
+        InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
+        GameManager.Instance.ConnectToServer(false);
+    }
+
+    void OnStoryClientConnState(ClientConnectionStateArgs args)
+    {
+        switch (args.ConnectionState)
+        {
+            case LocalConnectionState.Started:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
+                ApcsSceneLoader.Instance.LoadStoryGame();
+                return;
+            case LocalConnectionState.Stopping:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
+                break;
         }
     }
 }

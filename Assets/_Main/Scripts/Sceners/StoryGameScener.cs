@@ -4,19 +4,17 @@ using FishNet;
 using FishNet.Object;
 using UnityEngine;
 
-public class StoryGameScener : ApcsNetworkBehaviour
+public class StoryGameScener : MonoBehaviour
 {
     GameObject _player;
 
-    public override void OnStartClient()
+    private void Start()
     {
-        base.OnStartClient();
-        IfIsOwnerThenDo(SpawnPlayer);
+        SpawnPlayer();
     }
 
     private void SpawnPlayer()
     {
         _player = Instantiate(StoryGameManager.Instance.PlayerPrefab, transform.position, Quaternion.identity);
-        ServerManager.Spawn(_player, ClientManager.Connection);
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Entity : ApcsNetworkBehaviour, IHudable
+public class Entity : MonoBehaviour, IHudable
 {
     public DataEntity data;
     public FiniteStateMachine FSM;

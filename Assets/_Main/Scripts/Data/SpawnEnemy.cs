@@ -3,6 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public struct SpawnEnemy
 {
-    public ApcsNetworkBehaviour prefab;
+    public GameObject prefab;
     public Transform[] spawnPoints;
 }

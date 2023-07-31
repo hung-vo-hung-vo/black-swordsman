@@ -371,7 +371,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3188316309670549704}
   - component: {fileID: 6115138060455798908}
-  - component: {fileID: 1871410138392132988}
   m_Layer: 0
   m_Name: EvilWizard
   m_TagString: Untagged
@@ -408,9 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44ff6a997f92f6f0b6b7a935b32cc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 1871410138392132988}
-  _networkObjectCache: {fileID: 1871410138392132988}
   data: {fileID: 11400000, guid: 2fc1d3b10802c5179b3e09c860033458, type: 2}
   <Dropper>k__BackingField: {fileID: 4054705490845123057}
   wallCheck: {fileID: 7383560587142975156}
@@ -430,40 +426,6 @@ MonoBehaviour:
   attack2Data: {fileID: 11400000, guid: 92fb30e5fec86b682b4035cb38663ea8, type: 2}
   takeHitData: {fileID: 11400000, guid: 62f8e5a1ffdf1cfd7b1004532b4f178a, type: 2}
   attackPosition: {fileID: 9131755330752103128}
---- !u!114 &1871410138392132988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5407208078333568533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
-  <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 0
-  <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 13901440539501521961
-  _sceneNetworkObjects: []
-  <IsNested>k__BackingField: 0
-  <ComponentIndex>k__BackingField: 0
-  <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours:
-  - {fileID: 6115138060455798908}
-  <ParentNetworkObject>k__BackingField: {fileID: 0}
-  <ChildNetworkObjects>k__BackingField: []
-  SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _isGlobal: 0
-  _initializeOrder: 0
-  _defaultDespawnType: 0
 --- !u!1 &8889299846485771775
 GameObject:
   m_ObjectHideFlags: 0

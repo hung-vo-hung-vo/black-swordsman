@@ -7,7 +7,7 @@ using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : ApcsNetworkBehaviour, IHealthable
+public class Player : MonoBehaviour, IHealthable
 {
     [SerializeField] PlayerDataSO _playerData;
     [SerializeField] AnimationAgent _anim;
@@ -26,32 +26,28 @@ public class Player : ApcsNetworkBehaviour, IHealthable
     UnityEvent _onTakeDamage = new UnityEvent();
     bool _isDead = false;
 
-    public override void OnStartClient()
+    private void Start()
     {
-        base.OnStartClient();
-        IfIsOwnerThenDo(() =>
-        {
-            _stat.Init(_playerData);
-            _skillAgent.Init(_stat, _playerData.GetSkills());
-            _jumper.Init(_stat, _playerData, Jump);
-            _inventory.SetupUI();
+        _stat.Init(_playerData);
+        _skillAgent.Init(_stat, _playerData.GetSkills());
+        _jumper.Init(_stat, _playerData, Jump);
+        _inventory.SetupUI();
 
-            OnDie().AddListener(() => _isDead = true);
-            OnDie().AddListener(UnsubscribeInput);
-            OnDie().AddListener(_body.Sleep);
-            OnDie().AddListener(() => _anim.SetTrigger(AnimationParam.Death));
+        OnDie().AddListener(() => _isDead = true);
+        OnDie().AddListener(UnsubscribeInput);
+        OnDie().AddListener(_body.Sleep);
+        OnDie().AddListener(() => _anim.SetTrigger(AnimationParam.Death));
 
-            OnTakeDamage().AddListener(() => _anim.SetTrigger(AnimationParam.TakeHit));
-            OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));
+        OnTakeDamage().AddListener(() => _anim.SetTrigger(AnimationParam.TakeHit));
+        OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));
 
-            RegisterInput();
-            VirtualCameraFollow();
-        });
+        RegisterInput();
+        VirtualCameraFollow();
     }
 
     void OnDestroy()
     {
-        IfIsOwnerThenDo(UnsubscribeInput);
+        UnsubscribeInput();
     }
 
     void RegisterInput()
@@ -163,27 +159,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.SCENE_LOAD))
         {
-            InstanceFinder.ClientManager.StopConnection();
-        }
-    }
-
-    public override void OnStopClient()
-    {
-        InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
-        GameManager.Instance.ConnectToServer(false);
-    }
-
-    void OnStoryClientConnState(ClientConnectionStateArgs args)
-    {
-        switch (args.ConnectionState)
-        {
-            case LocalConnectionState.Started:
-                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
-                ApcsSceneLoader.Instance.LoadStoryGame();
-                return;
-            case LocalConnectionState.Stopping:
-                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
-                break;
+            ApcsSceneLoader.Instance.LoadStoryGame();
         }
     }
 }

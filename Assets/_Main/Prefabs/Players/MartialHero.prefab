@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2387510086461762423}
   - component: {fileID: 7492745817146975536}
   - component: {fileID: 1045154511920174484}
+  - component: {fileID: 8876352198291919011}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -202,8 +203,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skill: {fileID: 1030602498248412155}
-  _netAnim: {fileID: 0}
-  _anim: {fileID: 0}
+  _netAnim: {fileID: 8876352198291919011}
+  _anim: {fileID: 7492745817146975536}
+--- !u!114 &8876352198291919011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612774516796089340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 5257525934315815265}
+  _networkObjectCache: {fileID: 5257525934315815265}
+  IgnoredParameters: []
+  _animator: {fileID: 7492745817146975536}
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0
 --- !u!1 &6062968729716802832
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +309,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5257525934315815265}
   _networkObjectCache: {fileID: 5257525934315815265}
   _playerData: {fileID: 11400000, guid: 05889a9a7a70d08208a4033cbefc3ed1, type: 2}
-  _anim: {fileID: 0}
+  _anim: {fileID: 1045154511920174484}
   _body: {fileID: 7648641917867447362}
   _avatar: {fileID: 2387510086461762423}
   _skillAgent: {fileID: 1030602498248412155}
@@ -318,6 +340,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 6618699831329491954}
+  - {fileID: 8876352198291919011}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
@@ -389,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _debugHP: {fileID: 11400000, guid: b0743fdbcdc22b6a39ec6d0d7118d107, type: 2}
   _debugMP: {fileID: 11400000, guid: 437ef3925bab7f9a79990ad5cd0b732d, type: 2}
-  _debugAmount: 1
+  _debugAmount: 7
 --- !u!1 &6721285408954382499
 GameObject:
   m_ObjectHideFlags: 0

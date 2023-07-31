@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 1080
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -124,7 +124,7 @@ RectTransform:
   m_GameObject: {fileID: 7002910707269371158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 200856085840508327}
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 120, y: 120}
-  m_Spacing: {x: 24, y: 0}
+  m_CellSize: {x: 92, y: 92}
+  m_Spacing: {x: 28, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &3389151432439875504

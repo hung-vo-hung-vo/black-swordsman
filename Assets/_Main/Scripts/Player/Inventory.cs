@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] ItemSO _debugHP, _debugMP;
     [SerializeField] int _debugAmount;
 
+    UnityEvent _onUpdated = new UnityEvent();
+
     private void Awake()
     {
         if (GameManager.IsDebug())
@@ -16,6 +19,12 @@ public class Inventory : MonoBehaviour
             _items[_debugHP] = _debugAmount;
             _items[_debugMP] = _debugAmount;
         }
+    }
+
+    public void SetupUI()
+    {
+        var callback = FindAnyObjectByType<InventoryUI>().SetInventory(this);
+        _onUpdated.AddListener(callback);
     }
 
     public ItemSO GetItemByAction(ItemAction action)
@@ -42,10 +51,12 @@ public class Inventory : MonoBehaviour
         if (!_items.ContainsKey(item))
         {
             _items[item] = 1;
+            _onUpdated?.Invoke();
             return;
         }
 
         _items[item]++;
+        _onUpdated?.Invoke();
     }
 
     public void UseItem(ItemSO item)
@@ -55,5 +66,7 @@ public class Inventory : MonoBehaviour
         {
             _items.Remove(item);
         }
+
+        _onUpdated?.Invoke();
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d949c7cc3b1a68fbb0822d6589d3cc, type: 3}
+  m_Name: BasicHP
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Basic HP
+  <Icon>k__BackingField: {fileID: -1189072213, guid: c2f19287bc96a46e4b9eaa0cf000348f, type: 3}
+  <Number>k__BackingField: 30
+  <Action>k__BackingField: 0

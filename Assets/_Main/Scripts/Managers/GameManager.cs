@@ -10,6 +10,15 @@ public class GameManager : Singleton<GameManager>
 
     public NetworkManager NetworkManager { get; private set; }
 
+    public static bool IsDebug()
+    {
+        var isDebug = false;
+#if UNITY_EDITOR
+        isDebug = true;
+#endif
+        return isDebug;
+    }
+
     protected override void Awake()
     {
         base.Awake();

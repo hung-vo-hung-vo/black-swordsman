@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skill: {fileID: 1030602498248412155}
+  _netAnim: {fileID: 0}
+  _anim: {fileID: 0}
 --- !u!1 &6062968729716802832
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +287,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5257525934315815265}
   _networkObjectCache: {fileID: 5257525934315815265}
   _playerData: {fileID: 11400000, guid: 05889a9a7a70d08208a4033cbefc3ed1, type: 2}
-  _animator: {fileID: 7492745817146975536}
+  _anim: {fileID: 0}
   _body: {fileID: 7648641917867447362}
   _avatar: {fileID: 2387510086461762423}
   _skillAgent: {fileID: 1030602498248412155}
@@ -385,6 +387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e3399f084a17fb787c272a9366c110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _debugHP: {fileID: 11400000, guid: b0743fdbcdc22b6a39ec6d0d7118d107, type: 2}
+  _debugMP: {fileID: 11400000, guid: 437ef3925bab7f9a79990ad5cd0b732d, type: 2}
+  _debugAmount: 1
 --- !u!1 &6721285408954382499
 GameObject:
   m_ObjectHideFlags: 0

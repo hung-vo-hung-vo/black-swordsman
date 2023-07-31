@@ -33,7 +33,7 @@ public class StoryGameManager : Singleton<StoryGameManager>
             return null;
         }
 
-        _currentLevel = levels[GameManager.IsDebug() ? 0 : Random.Range(0, levels.Count)];
+        _currentLevel = levels[Random.Range(0, levels.Count)];
         return _currentLevel;
     }
 

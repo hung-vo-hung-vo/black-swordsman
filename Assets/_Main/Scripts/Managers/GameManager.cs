@@ -22,11 +22,11 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        NetworkManager = FindObjectOfType<NetworkManager>();
-        if (Application.platform == RuntimePlatform.LinuxServer)
-        {
-            NetworkManager.ServerManager.StartConnection(_serverPort);
-        }
+        // NetworkManager = FindObjectOfType<NetworkManager>();
+        // if (Application.platform == RuntimePlatform.LinuxServer)
+        // {
+        //     NetworkManager.ServerManager.StartConnection(_serverPort);
+        // }
     }
 
     public void ConnectToServer(bool isCoopMode)

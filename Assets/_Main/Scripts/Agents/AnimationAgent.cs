@@ -4,7 +4,7 @@ using UnityEngine;
 public class AnimationAgent : MonoBehaviour, IAttackable, IAnimatable
 {
     [SerializeField] SkillAgent _skill;
-    [SerializeField] NetworkAnimator _netAnim;
+    // [SerializeField] NetworkAnimator _netAnim;
     [SerializeField] Animator _anim;
 
     public void DisableAttack()
@@ -24,6 +24,6 @@ public class AnimationAgent : MonoBehaviour, IAttackable, IAnimatable
 
     public void SetTrigger(string param)
     {
-        _netAnim.SetTrigger(param);
+        _anim.SetTrigger(param);
     }
 }

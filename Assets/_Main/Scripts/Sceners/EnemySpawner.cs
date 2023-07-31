@@ -1,4 +1,3 @@
-using FishNet;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -20,7 +19,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                     var e = Instantiate(pE.prefab.gameObject, p.position, p.rotation);
                     e.GetComponent<Entity>().Dropper.SetDropPoint(p);
-                    InstanceFinder.ServerManager.Spawn(e);
                 }
             }
         }

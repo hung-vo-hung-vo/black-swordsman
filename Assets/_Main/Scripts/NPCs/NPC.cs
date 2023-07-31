@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPC : ApcsNetworkBehaviour
+public class NPC : MonoBehaviour
 {
     public void ShowQuest()
     {

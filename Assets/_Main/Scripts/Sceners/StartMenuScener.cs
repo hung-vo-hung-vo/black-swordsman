@@ -8,8 +8,10 @@ public class StartMenuScener : MonoBehaviour
 {
     public void StartStoryGame()
     {
-        InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
-        GameManager.Instance.ConnectToServer(false);
+        // InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
+        // GameManager.Instance.ConnectToServer(false);
+
+        ApcsSceneLoader.Instance.LoadStoryGame();
     }
 
     void OnStoryClientConnState(ClientConnectionStateArgs args)

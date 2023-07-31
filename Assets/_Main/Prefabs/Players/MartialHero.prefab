@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 2387510086461762423}
   - component: {fileID: 7492745817146975536}
   - component: {fileID: 1045154511920174484}
-  - component: {fileID: 8876352198291919011}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -203,29 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skill: {fileID: 1030602498248412155}
-  _netAnim: {fileID: 8876352198291919011}
+  _netAnim: {fileID: 0}
   _anim: {fileID: 7492745817146975536}
---- !u!114 &8876352198291919011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612774516796089340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 5257525934315815265}
-  _networkObjectCache: {fileID: 5257525934315815265}
-  IgnoredParameters: []
-  _animator: {fileID: 7492745817146975536}
-  _smoothFloats: 1
-  _interpolation: 2
-  _clientAuthoritative: 1
-  _sendToOwner: 0
 --- !u!1 &4730131585359291915
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +298,6 @@ GameObject:
   - component: {fileID: 3764187195545591724}
   - component: {fileID: 7648641917867447362}
   - component: {fileID: 6618699831329491954}
-  - component: {fileID: 5257525934315815265}
   - component: {fileID: 6542207217284267289}
   - component: {fileID: 262044478281938511}
   m_Layer: 8
@@ -388,9 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50609ff5bf4887992ab4bd75c9ca09d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5257525934315815265}
-  _networkObjectCache: {fileID: 5257525934315815265}
   _playerData: {fileID: 11400000, guid: 05889a9a7a70d08208a4033cbefc3ed1, type: 2}
   _anim: {fileID: 1045154511920174484}
   _body: {fileID: 7648641917867447362}
@@ -399,41 +373,6 @@ MonoBehaviour:
   _jumper: {fileID: 3518319217037110684}
   _stat: {fileID: 262044478281938511}
   _inventory: {fileID: 7719018853104693164}
---- !u!114 &5257525934315815265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6062968729716802832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 10
-  <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 0
-  <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 17138816297182867629
-  _sceneNetworkObjects: []
-  <IsNested>k__BackingField: 0
-  <ComponentIndex>k__BackingField: 0
-  <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours:
-  - {fileID: 6618699831329491954}
-  - {fileID: 8876352198291919011}
-  <ParentNetworkObject>k__BackingField: {fileID: 0}
-  <ChildNetworkObjects>k__BackingField: []
-  SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _isGlobal: 0
-  _initializeOrder: 0
-  _defaultDespawnType: 0
 --- !u!70 &6542207217284267289
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

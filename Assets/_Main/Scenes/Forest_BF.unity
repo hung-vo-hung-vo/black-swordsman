@@ -1864,7 +1864,7 @@ PrefabInstance:
     - target: {fileID: 7061272088644601212, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: _enemies.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 6115138060455798908, guid: 2e94f93d6879501cc89824057c749444, type: 3}
+      objectReference: {fileID: 5407208078333568533, guid: 2e94f93d6879501cc89824057c749444, type: 3}
     - target: {fileID: 7061272088644601212, guid: 7c0bdf8ef468c48fdb5d1edce9cfc744, type: 3}
       propertyPath: _enemies.Array.data[0].spawnPoints.Array.size
       value: 1

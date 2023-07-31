@@ -152,19 +152,4 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.PICKABLE_ITEM))
-        {
-            var item = other.GetComponent<Item>();
-            if (item == null)
-            {
-                return;
-            }
-
-            _inventory.AddItem(item.ItemData);
-            Destroy(other.gameObject);
-        }
-    }
 }

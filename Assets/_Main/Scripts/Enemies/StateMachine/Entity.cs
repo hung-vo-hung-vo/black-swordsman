@@ -13,6 +13,7 @@ public class Entity : ApcsNetworkBehaviour, IHudable
     public Anim2State a2s { get; private set; }
     protected int lastDamageDirection { get; private set; }
 
+    [field: SerializeField] public ItemDropper Dropper { get; private set; }
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]

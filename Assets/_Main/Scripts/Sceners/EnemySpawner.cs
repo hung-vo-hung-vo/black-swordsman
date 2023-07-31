@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
                 if (p != null)
                 {
                     var e = Instantiate(pE.prefab.gameObject, p.position, p.rotation);
+                    e.GetComponent<Entity>().Dropper.SetDropPoint(p);
                     InstanceFinder.ServerManager.Spawn(e);
                 }
             }

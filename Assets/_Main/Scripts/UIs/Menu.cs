@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
         ApcsSceneLoader.Instance.LoadStartMenu();
     }
 
-    private void Awake()
+    private void Start()
     {
         _container.SetActive(false);
     }

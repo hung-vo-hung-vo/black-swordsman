@@ -69,4 +69,19 @@ public class Inventory : MonoBehaviour
 
         _onUpdated?.Invoke();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.PICKABLE_ITEM))
+        {
+            var item = other.GetComponent<Item>();
+            if (item == null)
+            {
+                return;
+            }
+
+            AddItem(item.ItemData);
+            Destroy(other.gameObject);
+        }
+    }
 }

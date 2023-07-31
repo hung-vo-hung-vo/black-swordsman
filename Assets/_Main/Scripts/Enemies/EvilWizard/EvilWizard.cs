@@ -13,6 +13,7 @@ public class EvilWizard : Entity
     public EW_Dead deadState { get; private set; }
     public EW_MeleeAttack attackState { get; private set; }
     public EW_TakeHit takeHitState { get; private set; }
+    public EW_MeleeAttack attack2State { get; private set; }
 
     [SerializeField] private DataIdle idleData;
     [SerializeField] private DataPatrol patrolData;
@@ -22,6 +23,7 @@ public class EvilWizard : Entity
     [SerializeField] private TiredData tiredData;
     [SerializeField] private DeadData deadData;
     [SerializeField] private MeleeAttackData attackData;
+    [SerializeField] private MeleeAttackData attack2Data;
     [SerializeField] private TakeHitData takeHitData;
     [SerializeField] private Transform attackPosition;
 
@@ -36,7 +38,8 @@ public class EvilWizard : Entity
         lookForPlayerState = new EW_LookingForPlayer(this, FSM, "lookingForPlayer", lookingForPlayerData, this);
         tiredState = new EW_Tired(this, FSM, "tired", tiredData, this);
         deadState = new EW_Dead(this, FSM, "dead", deadData, this);
-        attackState = new EW_MeleeAttack(this, FSM, "attack", attackPosition, attackData, this);
+        attackState = new EW_MeleeAttack(this, FSM, "attack1", attackPosition, attackData, this);
+        attack2State = new EW_MeleeAttack(this, FSM, "attack2", attackPosition, attack2Data, this);
         takeHitState = new EW_TakeHit(this, FSM, "takeHit", takeHitData, this);
 
         FSM.Initialize(patrolState);

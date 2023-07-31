@@ -24,7 +24,7 @@ public class EW_PlayerDetected : PlayerDetected
 
         if (canPerformCloseRangeSkill)
         {
-            FSM.ChangeState(enemy.attackState);
+            FSM.ChangeState(Random.Range(0, 2) == 0 ? enemy.attackState : enemy.attack2State);
         }
         else if (canPerformLongRangeSkill)
         {

@@ -32,7 +32,7 @@ public class EW_Chase : Chase
 
         if (isPlayerInCloseActionRange)
         {
-            FSM.ChangeState(enemy.attackState);
+            FSM.ChangeState(Random.Range(0, 2) == 0 ? enemy.attackState : enemy.attack2State);
         }
         else if (!isLedge || isWall)
         {

@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using FishNet;
 using FishNet.Object;
+using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Player : ApcsNetworkBehaviour, IHealthable
 {
     [SerializeField] PlayerDataSO _playerData;
-    [SerializeField] Animator _animator;
+    [SerializeField] AnimationAgent _anim;
     [SerializeField] Rigidbody2D _body;
     [SerializeField] SpriteRenderer _avatar;
     [SerializeField] SkillAgent _skillAgent;
@@ -32,13 +34,14 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             _stat.Init(_playerData);
             _skillAgent.Init(_stat, _playerData.GetSkills());
             _jumper.Init(_stat, _playerData, Jump);
+            _inventory.SetupUI();
 
             OnDie().AddListener(() => _isDead = true);
             OnDie().AddListener(UnsubscribeInput);
             OnDie().AddListener(_body.Sleep);
-            OnDie().AddListener(() => _animator.SetTrigger(AnimationParam.Death));
+            OnDie().AddListener(() => _anim.SetTrigger(AnimationParam.Death));
 
-            OnTakeDamage().AddListener(() => _animator.SetTrigger(AnimationParam.TakeHit));
+            OnTakeDamage().AddListener(() => _anim.SetTrigger(AnimationParam.TakeHit));
             OnTakeDamage().AddListener(() => StartCoroutine(IEShock()));
 
             RegisterInput();
@@ -86,7 +89,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
 
     public void Run(int dir)
     {
-        _animator.SetBool(AnimationParam.Run, dir != 0);
+        _anim.SetBool(AnimationParam.Run, dir != 0);
 
         if (dir == 0)
         {
@@ -102,7 +105,7 @@ public class Player : ApcsNetworkBehaviour, IHealthable
 
     void Jump()
     {
-        _animator.SetTrigger(AnimationParam.Jump);
+        _anim.SetTrigger(AnimationParam.Jump);
         _body.AddForce(Vector2.up * _playerData.JumpForce, ForceMode2D.Impulse);
     }
 
@@ -149,6 +152,38 @@ public class Player : ApcsNetworkBehaviour, IHealthable
                 default:
                     break;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DEATH))
+        {
+            TakeDamage(new AttackStats() { damage = _stat.HealthPoint });
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.SCENE_LOAD))
+        {
+            InstanceFinder.ClientManager.StopConnection();
+        }
+    }
+
+    public override void OnStopClient()
+    {
+        InstanceFinder.ClientManager.OnClientConnectionState += OnStoryClientConnState;
+        GameManager.Instance.ConnectToServer(false);
+    }
+
+    void OnStoryClientConnState(ClientConnectionStateArgs args)
+    {
+        switch (args.ConnectionState)
+        {
+            case LocalConnectionState.Started:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
+                ApcsSceneLoader.Instance.LoadStoryGame();
+                return;
+            case LocalConnectionState.Stopping:
+                InstanceFinder.ClientManager.OnClientConnectionState -= OnStoryClientConnState;
+                break;
         }
     }
 }

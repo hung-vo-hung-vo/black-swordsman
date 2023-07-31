@@ -10,6 +10,8 @@ public class ApcsSceneLoader : Singleton<ApcsSceneLoader>
 
     public void LoadStoryGame()
     {
-        SceneManager.LoadScene(StoryGameManager.Instance.GetNextLevel());
+        var next = StoryGameManager.Instance.GetNextLevel();
+        Debug.Log(next);
+        SceneManager.LoadScene(next);
     }
 }

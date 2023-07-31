@@ -22,6 +22,7 @@ public class Dead : State
         entity.SetVelocityX(0f);
         // entity.InitIcon(data.icon);
 
+        entity.Dropper.DropItem();
         entity.a2s.deadState = this;
     }
 

@@ -13,6 +13,7 @@ public class Entity : ApcsNetworkBehaviour, IHudable
     public Anim2State a2s { get; private set; }
     protected int lastDamageDirection { get; private set; }
 
+    [field: SerializeField] public ItemDropper Dropper { get; private set; }
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]
@@ -212,5 +213,13 @@ public class Entity : ApcsNetworkBehaviour, IHudable
         }
 
         return !player.IsDead();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DEATH))
+        {
+            FSM.ChangeState(a2s.deadState);
+        }
     }
 }

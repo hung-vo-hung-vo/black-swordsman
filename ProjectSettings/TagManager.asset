@@ -17,10 +17,10 @@ TagManager:
   - Player
   - Dead
   - Damageable
-  - 
-  - 
-  - 
-  - 
+  - Pickable
+  - Inventory
+  - Death
+  - SceneLoad
   - 
   - 
   - 

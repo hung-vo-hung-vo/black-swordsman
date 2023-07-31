@@ -220,6 +220,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a933bcc668910d628ee23be33bb7dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2623171848855446612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6417584643477246829}
+  - component: {fileID: 4054705490845123057}
+  m_Layer: 0
+  m_Name: ItemDropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6417584643477246829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623171848855446612}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.85318476, y: -0.29143465, z: -0.007655807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3188316309670549704}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4054705490845123057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623171848855446612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8664a246460b96101afac68cad10c3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 11400000, guid: 42dbd52f40d624e628b76b67f1053adb, type: 2}
+  maximumDrop: 4
+  _itemPrefab: {fileID: 2977305306814535501, guid: 4075007d87a13d66c913b13867c782fc, type: 3}
 --- !u!1 &3063708773010039652
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +392,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2963685244970012537}
+  - {fileID: 6417584643477246829}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -363,6 +412,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1871410138392132988}
   _networkObjectCache: {fileID: 1871410138392132988}
   data: {fileID: 11400000, guid: 2fc1d3b10802c5179b3e09c860033458, type: 2}
+  <Dropper>k__BackingField: {fileID: 4054705490845123057}
   wallCheck: {fileID: 7383560587142975156}
   ledgeCheck: {fileID: 8208547201206278502}
   playerCheck: {fileID: 1092809000188922250}
@@ -377,6 +427,7 @@ MonoBehaviour:
   tiredData: {fileID: 11400000, guid: e4cd15d69b85116799c5b46f31cf4df3, type: 2}
   deadData: {fileID: 11400000, guid: a0c456bcd0375f1f68d87e97671b25f4, type: 2}
   attackData: {fileID: 11400000, guid: 92fb30e5fec86b682b4035cb38663ea8, type: 2}
+  attack2Data: {fileID: 11400000, guid: 92fb30e5fec86b682b4035cb38663ea8, type: 2}
   takeHitData: {fileID: 11400000, guid: 62f8e5a1ffdf1cfd7b1004532b4f178a, type: 2}
   attackPosition: {fileID: 9131755330752103128}
 --- !u!114 &1871410138392132988

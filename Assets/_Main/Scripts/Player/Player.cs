@@ -152,4 +152,12 @@ public class Player : ApcsNetworkBehaviour, IHealthable
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DEATH))
+        {
+            TakeDamage(new AttackStats() { damage = _stat.HealthPoint });
+        }
+    }
 }

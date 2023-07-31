@@ -214,4 +214,12 @@ public class Entity : ApcsNetworkBehaviour, IHudable
 
         return !player.IsDead();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(ApcsLayerMask.DEATH))
+        {
+            FSM.ChangeState(a2s.deadState);
+        }
+    }
 }

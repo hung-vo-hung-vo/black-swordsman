@@ -427,6 +427,7 @@ MonoBehaviour:
   tiredData: {fileID: 11400000, guid: e4cd15d69b85116799c5b46f31cf4df3, type: 2}
   deadData: {fileID: 11400000, guid: a0c456bcd0375f1f68d87e97671b25f4, type: 2}
   attackData: {fileID: 11400000, guid: 92fb30e5fec86b682b4035cb38663ea8, type: 2}
+  attack2Data: {fileID: 11400000, guid: 92fb30e5fec86b682b4035cb38663ea8, type: 2}
   takeHitData: {fileID: 11400000, guid: 62f8e5a1ffdf1cfd7b1004532b4f178a, type: 2}
   attackPosition: {fileID: 9131755330752103128}
 --- !u!114 &1871410138392132988

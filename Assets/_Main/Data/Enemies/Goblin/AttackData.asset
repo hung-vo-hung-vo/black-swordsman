@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd33ac0beee0f89979bd37367b5574, type: 3}
   m_Name: AttackData
   m_EditorClassIdentifier: 
-  radius: 1
-  damage: 10
+  radius: 0.6
+  damage: 7

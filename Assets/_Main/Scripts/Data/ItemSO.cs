@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public float Number { get; private set; }
     [field: SerializeField] public ItemAction Action { get; private set; }
 }

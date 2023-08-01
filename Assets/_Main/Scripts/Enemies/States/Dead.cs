@@ -19,11 +19,15 @@ public class Dead : State
     {
         base.Enter();
 
+        // isFinishedDead = false;
+
         entity.SetVelocityX(0f);
         // entity.InitIcon(data.icon);
 
+        entity.Dropper.SetDropPoint(entity.body.transform);
         entity.Dropper.DropItem();
         entity.a2s.deadState = this;
+        // Debug.Log("WTF man!");
     }
 
     public override void Exit()
@@ -43,6 +47,8 @@ public class Dead : State
 
     public virtual void FinishDead()
     {
-        entity.gameObject.transform.parent.gameObject.SetActive(false);
+        // isFinishedDead = true;
+        // Debug.Log("????");
+        entity.gameObject.SetActive(false);
     }
 }

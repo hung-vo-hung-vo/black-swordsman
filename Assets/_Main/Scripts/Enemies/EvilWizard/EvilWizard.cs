@@ -47,6 +47,11 @@ public class EvilWizard : Entity
 
     public override void ReceiveDamage(AttackStats attackStats)
     {
+        if (isDead)
+        {
+            return;
+        }
+
         base.ReceiveDamage(attackStats);
 
         if (CheckGround()) // && !attackState.isPerformingAttack

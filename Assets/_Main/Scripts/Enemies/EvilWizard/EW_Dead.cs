@@ -10,4 +10,34 @@ public class EW_Dead : Dead
     {
         this.enemy = enemy;
     }
+
+    public override void Check()
+    {
+        base.Check();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void FinishDead()
+    {
+        base.FinishDead();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
 }

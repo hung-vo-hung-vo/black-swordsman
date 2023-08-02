@@ -7,6 +7,13 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] string _serverIP;
     [SerializeField] ushort _serverPort;
+    [field: SerializeField] public AudioSource Audio { get; private set; }
+
+    public bool HardMode { get; private set; }
+    public void SetDifficulty(bool hard)
+    {
+        HardMode = hard;
+    }
 
     public NetworkManager NetworkManager { get; private set; }
 

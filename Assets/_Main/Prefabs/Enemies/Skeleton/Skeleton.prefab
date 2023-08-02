@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1568326929874615334}
   - component: {fileID: 6142373604152508703}
   - component: {fileID: 4753145952405753645}
+  - component: {fileID: 8957589459500244027}
   m_Layer: 10
   m_Name: Avatar
   m_TagString: Enemy
@@ -220,6 +221,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a933bcc668910d628ee23be33bb7dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackSound: {fileID: 8300000, guid: 1028f45b50390ab709fc39d98c755af9, type: 3}
+  _audioSource: {fileID: 8957589459500244027}
+--- !u!82 &8957589459500244027
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772492023004992603}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3063708773010039652
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,8 +421,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3188316309670549704}
-  - component: {fileID: 1871410138392132988}
   - component: {fileID: 1482663648391790376}
+  - component: {fileID: 8977950906489327773}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -347,40 +446,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1871410138392132988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5407208078333568533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
-  <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 0
-  <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 4498004675671829831
-  _sceneNetworkObjects: []
-  <IsNested>k__BackingField: 0
-  <ComponentIndex>k__BackingField: 0
-  <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours:
-  - {fileID: 1482663648391790376}
-  <ParentNetworkObject>k__BackingField: {fileID: 0}
-  <ChildNetworkObjects>k__BackingField: []
-  SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _isGlobal: 0
-  _initializeOrder: 0
-  _defaultDespawnType: 0
 --- !u!114 &1482663648391790376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,10 +458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9cf52dd0e25630810420f508038e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 1871410138392132988}
-  _networkObjectCache: {fileID: 1871410138392132988}
   data: {fileID: 11400000, guid: 70e68cfa447e68c7b9d6d18defd0c349, type: 2}
+  <Dropper>k__BackingField: {fileID: 8977950906489327773}
   wallCheck: {fileID: 7383560587142975156}
   ledgeCheck: {fileID: 8208547201206278502}
   playerCheck: {fileID: 1092809000188922250}
@@ -413,6 +476,23 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: f0c27af8ac443ebf89a1ab9090cb2d7a, type: 2}
   takeHitData: {fileID: 11400000, guid: 7f889a962b3495a9a9e6b0ad4a49f802, type: 2}
   attackPosition: {fileID: 9131755330752103128}
+--- !u!114 &8977950906489327773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407208078333568533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8664a246460b96101afac68cad10c3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 11400000, guid: 42dbd52f40d624e628b76b67f1053adb, type: 2}
+  - {fileID: 11400000, guid: 5d0374bcf4c2f5b749d8c905e836683d, type: 2}
+  maximumDrop: 3
+  _itemPrefab: {fileID: 2977305306814535501, guid: 4075007d87a13d66c913b13867c782fc, type: 3}
 --- !u!1 &8889299846485771775
 GameObject:
   m_ObjectHideFlags: 0

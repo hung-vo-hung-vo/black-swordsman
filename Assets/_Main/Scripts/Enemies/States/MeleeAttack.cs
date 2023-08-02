@@ -26,7 +26,7 @@ public class MeleeAttack : Attack
         base.Enter();
 
         stats.position = attackPosition.position;
-        stats.damage = data.damage;
+        stats.damage = data.damage * (GameManager.Instance.HardMode ? 3f : 1f);
     }
 
     public override void Exit()

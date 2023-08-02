@@ -64,7 +64,7 @@ public class Entity : MonoBehaviour, IHudable
         animator = avatar.GetComponent<Animator>();
         a2s = avatar.GetComponent<Anim2State>();
 
-        CurHealth = data.maxHealth;
+        CurHealth = data.maxHealth * (GameManager.Instance.HardMode ? 3f : 1f);
         lastDamageTime = Time.time;
 
         isDead = false;

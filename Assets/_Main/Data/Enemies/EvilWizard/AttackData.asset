@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AttackData
   m_EditorClassIdentifier: 
   radius: 1
-  damage: 30
+  damage: 35

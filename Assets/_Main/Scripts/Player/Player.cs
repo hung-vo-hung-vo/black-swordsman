@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IHealthable
 
     private void Start()
     {
+        _anim.SetData(_playerData);
         _stat.Init(_playerData);
         _skillAgent.Init(_stat, _playerData.GetSkills());
         _jumper.Init(_stat, _playerData, Jump);

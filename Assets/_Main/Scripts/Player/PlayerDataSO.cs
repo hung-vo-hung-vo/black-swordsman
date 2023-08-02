@@ -19,6 +19,11 @@ public class PlayerDataSO : ScriptableObject
     [field: SerializeField] public float ShockTime { get; private set; } = 0.5f;
     [field: SerializeField] public float ShockForce { get; private set; } = 7f;
 
+    [field: SerializeField] public AudioClip RunSound { get; private set; }
+    [field: SerializeField] public AudioClip JumpSound { get; private set; }
+    [field: SerializeField] public AudioClip TakeHitSound { get; private set; }
+    [field: SerializeField] public AudioClip AttackSound { get; private set; }
+
     [field: SerializeField] public SkillData[] Skills { get; private set; }
 
     public Dictionary<int, SkillData> GetSkills()

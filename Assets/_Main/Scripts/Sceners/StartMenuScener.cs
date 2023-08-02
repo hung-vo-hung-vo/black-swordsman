@@ -32,4 +32,9 @@ public class StartMenuScener : MonoBehaviour
     {
         GameManager.Instance.ConnectToServer(true);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

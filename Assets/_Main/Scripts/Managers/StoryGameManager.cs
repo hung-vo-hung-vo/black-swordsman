@@ -11,18 +11,30 @@ public class StoryGameManager : Singleton<StoryGameManager>
     [field: SerializeField] public GameObject PlayerPrefab { get; private set; }
 
     List<string> _completedLevels;
-    string _currentLevel;
+    string _currentLevel = null;
 
     protected override void Awake()
     {
         base.Awake();
-        LoadGame();
+        // LoadGame();
     }
 
     public void SaveGame()
     {
         ES3.Save<List<string>>(_COMPLETED_LEVELS_KEY, _completedLevels);
         ES3.Save<string>(_CURRENT_LEVEL_KEY, _currentLevel);
+    }
+
+    public string GetSimpleNextLevel()
+    {
+        if (_currentLevel == null)
+        {
+            _currentLevel = _levels[0];
+            return _currentLevel;
+        }
+
+        _currentLevel = _currentLevel == _levels[0] ? _levels[1] : _levels[0];
+        return _currentLevel;
     }
 
     public string GetNextLevel()

@@ -11,7 +11,11 @@
 
 RPG 2D Platformer Game about the journey of a swordsman to rescue his younger sister from the evil.
 
-# Unity Version 2022.3.0f1
+# Unity Version
+
+2022.3.0f1
+
+# Resources References
 
 - Character sprites: https://luizmelo.itch.io/
 - Environment sprites: https://ansimuz.com/site/

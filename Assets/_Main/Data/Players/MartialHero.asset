@@ -20,6 +20,12 @@ MonoBehaviour:
   <JumpForce>k__BackingField: 24
   <DoubleJumpWaitingTime>k__BackingField: 0.3
   <DoubleJumpManaCost>k__BackingField: 5
+  <ShockTime>k__BackingField: 0.5
+  <ShockForce>k__BackingField: 7
+  <RunSound>k__BackingField: {fileID: 8300000, guid: 7004e81af6750203099b8f573b601712, type: 3}
+  <JumpSound>k__BackingField: {fileID: 8300000, guid: e7af946c33e4b8012bdcf1e4d5cdf5b7, type: 3}
+  <TakeHitSound>k__BackingField: {fileID: 8300000, guid: f847a6a9c0fa0c3eb833ba42f6b0a73a, type: 3}
+  <AttackSound>k__BackingField: {fileID: 8300000, guid: 894902c25d3bd441394ba029b12b6c2b, type: 3}
   <Skills>k__BackingField:
   - skillNumber: 1
     damage: 3

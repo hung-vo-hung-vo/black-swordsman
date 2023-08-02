@@ -8,6 +8,14 @@ public class Anim2State : MonoBehaviour
     public Dead deadState;
     // public TakeHit takeHitState;
 
+    [SerializeField] AudioClip _attackSound;
+    [SerializeField] AudioSource _audioSource;
+
+    public void PlayAttackSound()
+    {
+        _audioSource.PlayOneShot(_attackSound);
+    }
+
     private void TriggerAttack()
     {
         attackState.TriggerAttack();

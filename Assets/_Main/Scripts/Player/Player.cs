@@ -66,10 +66,10 @@ public class Player : MonoBehaviour, IHealthable
 
     void UnsubscribeInput()
     {
-        InputManager.Instance.OnRun.RemoveListener(Run);
-        InputManager.Instance.OnJump.RemoveListener(_jumper.Do);
-        InputManager.Instance.OnAttack.RemoveListener(Attack);
-        InputManager.Instance.OnUseItem.RemoveListener(UseItem);
+        InputManager.Instance.OnRun.RemoveAllListeners();
+        InputManager.Instance.OnAttack.RemoveAllListeners();
+        InputManager.Instance.OnUseItem.RemoveAllListeners();
+        InputManager.Instance.OnJump.RemoveAllListeners();
     }
 
     void VirtualCameraFollow()

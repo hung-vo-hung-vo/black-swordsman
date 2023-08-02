@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] ushort _serverPort;
     [field: SerializeField] public AudioSource Audio { get; private set; }
 
-    public bool HardMode { get; private set; }
+    public bool HardMode { get; private set; } = false;
     public void SetDifficulty(bool hard)
     {
         HardMode = hard;
@@ -34,6 +34,11 @@ public class GameManager : Singleton<GameManager>
         // {
         //     NetworkManager.ServerManager.StartConnection(_serverPort);
         // }
+    }
+
+    private void Start()
+    {
+        Audio.volume = 1f;
     }
 
     public void ConnectToServer(bool isCoopMode)

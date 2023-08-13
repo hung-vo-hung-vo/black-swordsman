@@ -9,7 +9,7 @@
 
 ## Introduction
 
-RPG 2D Platformer Game about the journey of a swordsman to rescue his younger sister from the evil.
+Action-adventure game that draws inspiration from the intense combat of Hollow Knight and the dark fantasy storyline of Berserk manga.
 
 # Unity Version
 
